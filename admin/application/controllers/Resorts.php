@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Resorts_cont extends CI_Controller {
+class Resorts extends CI_Controller {
 
     public function index() {
         $this->load->view('includes/header');
@@ -60,7 +60,7 @@ class Resorts_cont extends CI_Controller {
         exit;
     }
     
-    public function getResortsList(){
+    public function getAllResorts(){
         $query = $this->db->get('resorts');
         
         $arrData = array();

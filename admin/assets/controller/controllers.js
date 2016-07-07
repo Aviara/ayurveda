@@ -1320,15 +1320,15 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
           //      $scope.employeeTypeList = data.employeeTypeList;
        // });
 
-        if ($routeParams.resId) {
-            $scope.resId = $routeParams.resId;
-            var url = erpSystem.baseUrl + 'Resorts_cont/getResorts/' + $scope.resId;
+        if ($routeParams.resortId) {
+            $scope.resortId = $routeParams.resortId;
+            var url = erpSystem.baseUrl + 'Resorts/getResorts/' + $scope.resortId;
             $http.get(url).success(function (data) {
                 $scope.update = true;
                 $scope.res = data;
             });
         } else {
-            var url = erpSystem.baseUrl + 'Resorts_cont/getResortsList';
+            var url = erpSystem.baseUrl + 'Resorts/getAllResorts';
             $http.get(url).success(function (data) {
                 $scope.ResortsList = data;
             });
@@ -1337,10 +1337,10 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
         $scope.saveResortsData = function (res) {
             var url = '';
             if (res.hasOwnProperty('id')) {
-                url = erpSystem.baseUrl + 'Resorts_cont/editresorts'
+                url = erpSystem.baseUrl + 'Resorts/editresorts'
             } else {
                 $scope.message = "Operation Successful !!!";
-                url = erpSystem.baseUrl + 'Resorts_cont/saveResortsData'
+                url = erpSystem.baseUrl + 'Resorts/saveResortsData'
             }
 
             var postData = $.param({
@@ -1386,4 +1386,4 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
             $scope.deleteResortsId = ResortsId;
         }
     }
-]);
+]);g
