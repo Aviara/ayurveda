@@ -1308,4 +1308,82 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
             $scope.deleteRoomId = RoomId;
         }
     }
-]);
+])
+.controller('Resorts', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
+    function ($scope, $routeParams, $http, erpSystem, $location) {
+
+        $scope.updateData = false;
+
+       // var url = erpSystem.baseUrl + 'employee/getEmployeeTypeList';
+      
+      //  $http.get(url).success(function (data) {
+          //      $scope.employeeTypeList = data.employeeTypeList;
+       // });
+
+        if ($routeParams.resortId) {
+            $scope.resortId = $routeParams.resortId;
+            var url = erpSystem.baseUrl + 'Resorts/getResorts/' + $scope.resortId;
+            $http.get(url).success(function (data) {
+                $scope.update = true;
+                $scope.res = data;
+            });
+        } else {
+            var url = erpSystem.baseUrl + 'Resorts/getAllResorts';
+            $http.get(url).success(function (data) {
+                $scope.ResortsList = data;
+            });
+        }
+
+        $scope.saveResortsData = function (res) {
+            var url = '';
+            if (res.hasOwnProperty('id')) {
+                url = erpSystem.baseUrl + 'Resorts/editresorts'
+            } else {
+                $scope.message = "Operation Successful !!!";
+                url = erpSystem.baseUrl + 'Resorts/saveResortsData'
+            }
+
+            var postData = $.param({
+                params: res
+            });
+
+            var config = {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                }
+            };
+
+            var boolIsInsert = false;
+
+            $http.post(url, postData, config).success(function (data, status, headers, config) {
+                boolIsInsert = data.success;
+
+                if (res.hasOwnProperty('id') && 1 == boolIsInsert) {
+                    $location.url('view-employees?update=true&id=' + res.id);
+                } else {
+                    $location.url('view-employees?insert=true');
+                }
+            }).error(function (data, status, headers, config) {
+            });
+
+        }
+         $scope.deleteResorts = function (){
+//            console.log($scope.deleteResortsId);
+
+            var url = erpSystem.baseUrl + 'res/deleteResorts/' + $scope.deleteStudentId
+            $http.delete(url)
+            
+            .success(function (data) {
+                if (1 == data.success || 1 === data.success) {
+                    var myEl = angular.element(document.querySelector('#row-' + $scope.deleteResortsId));
+                    myEl.empty();  //clears contents
+                    $('.modal-footer .btn-default').click();
+                }
+            });
+        }
+
+        $scope.deleteConfirm = function (ResortsId) {
+            $scope.deleteResortsId = ResortsId;
+        }
+    }
+]);g

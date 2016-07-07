@@ -282,7 +282,19 @@ laundryApp.config(['$routeProvider',
 //                when('/http://localhost/laundry-erp/partials/challan-status/print-label-window.html',{
 //                    templateUrl: 'http://localhost/laundry-erp/partials/challan-status/print-label-window.html',
 //                    controller: 'ChallanSearchController'
-//                }).        
+//                }).       
+                    when('/add-resorts', {
+                    templateUrl: baseUrlLink + 'partials/resorts/add-resorts.html',
+                    controller: 'Resorts'
+                }).
+                    when('/view-resorts', {
+                    templateUrl: baseUrlLink + 'partials/resorts/view-resorts.html',
+                    controller: 'Resorts'
+                }).
+                     when('/add-resorts/edit/:resortId', {
+                    templateUrl: baseUrlLink + 'partials/resorts/add-resorts.html',
+                    controller: 'Resorts'
+                }).
                 otherwise({
                     redirectTo: '/dashbord'
 

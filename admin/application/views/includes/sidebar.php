@@ -27,58 +27,17 @@
 							<li>
 								<a href="index.html"><i class="fa fa-home"></i> <span class="title"> Dashboard </span><span class="label label-default pull-right ">LABEL</span> </a>
 							</li>
-							<li>
-								<a href="javascript:void(0)"><i class="fa fa-desktop"></i> <span class="title"> Layouts </span><i class="icon-arrow"></i> </a>
-								<ul class="sub-menu">
-									<li>
-										<a href="javascript:;">
-											Horizontal Menu <i class="icon-arrow"></i>
-										</a>
-										<ul class="sub-menu">
-											<li>
-												<a href="layouts_horizontal_menu.html">
-													Horizontal Menu
-												</a>
-											</li>
-											<li>
-												<a href="layouts_horizontal_menu_fixed.html">
-													Horizontal Menu Fixed
-												</a>
-											</li>
-											<li>
-												<a href="layouts_horizontal_sidebar_menu.html">
-													Horizontal &amp; Sidebar Menu
-												</a>
-											</li>
-										</ul>
-									</li>
-									<li>
-										<a href="layouts_sidebar_closed.html">
-											<span class="title"> Sidebar Closed </span>
-										</a>
-									</li>
-									<li>
-										<a href="layouts_sidebar_not_fixed.html">
-											<span class="title"> Sidebar Not Fixed </span>
-										</a>
-									</li>
-									<li>
-										<a href="layouts_boxed_layout.html">
-											<span class="title"> Boxed Layout </span>
-										</a>
-									</li>
-									<li>
-										<a href="layouts_footer_fixed.html">
-											<span class="title"> Footer Fixed </span>
-										</a>
-									</li>
-									<li>
-										<a href="layouts_single_page.html">
-											<span class="title"> Single-Page Interface </span>
-										</a>
-									</li>
-								</ul>
-							</li>
+							 <!--Resorts Kalpesh start-->
+                    
+                                                              <li class="active">
+                                                                    <a href=""><i class="fa fa-home"></i><span class="title">Resorts</span><span class="label label-success pull-right ">Add/Edit/Delete</span> </a>
+                                                                    <ul class="sub-menu">
+                                                                       <li><a href="#/add-resorts"><span class="title"> Add Resorts </span><span class="label label-success pull-right ">Add</span></a></li>
+                                                                        <li><a href="#/view-resorts"><span class="title"> View Resorts </span><span class="label label-success pull-right ">view</span></a></li>
+                                                                      </ul>
+                                                              </li>
+                    
+                                                          <!--Resorts Kalpesh end-->
 							<li>
 								<a href="javascript:void(0)"><i class="fa fa-cogs"></i> <span class="title"> UI Lab </span><i class="icon-arrow"></i> </a>
 								<ul class="sub-menu">
