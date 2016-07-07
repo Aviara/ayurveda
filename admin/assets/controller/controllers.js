@@ -1225,4 +1225,87 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
         $scope.fruitName = undefined;
         $scope.items = ["Apple", "Banana", "Orange"];
     }
+])
+.controller('add_room', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
+    function ($scope, $routeParams, $http, erpSystem, $location) {
+
+        $scope.updateData = false;
+
+//        var url = erpSystem.baseUrl + 'employee/getEmployeeTypeList';
+//       // alert (url);
+//        $http.get(url).success(function (data) {
+//            $scope.employeeTypeList = data.employeeTypeList;
+       // });
+
+        if ($routeParams.id) {
+            $scope.id = $routeParams.id;
+            var url = erpSystem.baseUrl + 'Rooms/getRoomByRoomId/' + $scope.id;
+            $http.get(url).success(function (data) {
+                $scope.update = true;
+                $scope.hrm = data;
+            });
+        } else {
+            var url = erpSystem.baseUrl + 'Rooms/getRoomListByResortId';
+            $http.get(url).success(function (data) {
+                $scope.RoomList = data;
+            });
+        }
+
+        $scope.saveRoom = function (hrm) {
+            
+           // alert('hi');
+            var url = '';
+            if (hrm.hasOwnProperty('id')) {
+                url = erpSystem.baseUrl + 'Rooms/editroom';
+               // alert (url);
+            } else {
+                $scope.message = "Operation Successful !!!";
+                url = erpSystem.baseUrl + 'Rooms/saveRoom';
+                //alert (url);
+            }
+//              if (clothType.hasOwnProperty('id')) {
+//                url = erpSystem.baseUrl + 'clothtype/editClothType';
+//            }
+
+            var postData = $.param({
+                params: hrm
+            });
+
+            var config = {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                }
+            };
+
+            var boolIsInsert = false;
+
+            $http.post(url, postData, config).success(function (data, status, headers, config) {
+                boolIsInsert = data.success;
+
+                if (hrm.hasOwnProperty('id') && 1 == boolIsInsert) {
+                    $location.url('view-room?update=true');
+                } else {
+                    $location.url('view-room?insert=true');
+                }
+            }).error(function  (data, status, headers, config) {
+            });
+
+        }
+        $scope.deleteRoom = function (){
+//            console.log($scope.deleteEmployeeId);
+
+            var url = erpSystem.baseUrl + 'Rooms/deleteRoom/' + $scope.deleteRoomId
+            $http.delete(url).success(function (data) {
+                if (1 == data.success || 1 === data.success) {
+                    var myEl = angular.element(document.querySelector('#row-' + $scope.deleteRoomId));
+                    myEl.empty();  //clears contents
+                    $('.modal-footer .btn-default').click();
+                }
+            });
+        }
+
+        $scope.deleteConfirm = function (RoomId) {
+            $scope.deleteRoomId = RoomId;
+        }
+    }
 ]);

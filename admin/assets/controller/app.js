@@ -267,6 +267,18 @@ laundryApp.config(['$routeProvider',
                     templateUrl: baseUrlLink + 'partials/outsourced/add-outsource.html',
                     controller: 'Challans'
                 }).
+                 when('/add-room',{
+                    templateUrl: baseUrlLink + 'partials/hotel_rooms/add_room.html',
+                    controller: 'add_room'
+                }).
+                  when('/view-room',{
+                    templateUrl: baseUrlLink + 'partials/hotel_rooms/view-room.html',
+                    controller: 'add_room'
+                }).
+                  when('/add-room/edit/:id',{
+                    templateUrl: baseUrlLink + 'partials/hotel_rooms/add_room.html',
+                    controller: 'add_room'
+               }).    
 //                when('/http://localhost/laundry-erp/partials/challan-status/print-label-window.html',{
 //                    templateUrl: 'http://localhost/laundry-erp/partials/challan-status/print-label-window.html',
 //                    controller: 'ChallanSearchController'
