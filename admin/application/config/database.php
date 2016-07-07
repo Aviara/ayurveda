@@ -85,7 +85,7 @@ $db['default'] = array(
 	'password' => '',
     
 	//'database' => 'erp',
-        'database' => 'ayurvada_db',
+        'database' => 'ayurveda_db',
 	'dbdriver' => 'mysqli',
 	'dbprefix' => '',
 	'pconnect' => FALSE,
