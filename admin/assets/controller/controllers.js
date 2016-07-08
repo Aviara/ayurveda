@@ -1413,7 +1413,7 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
         }
     }
 ])
-.controller('add-offer', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
+.controller('add-offer-benefit', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
     function ($scope, $routeParams, $http, erpSystem, $location) {
 
         $scope.updateData = false;
@@ -1426,13 +1426,13 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
 
         if ($routeParams.RoomOfferId) {
             $scope.RoomOfferId = $routeParams.RoomOfferId;
-            var url = erpSystem.baseUrl + 'Room_offer/getRoomOffer/' + $scope.RoomOfferId;
+            var url = erpSystem.baseUrl + 'RoomOfferBenefit/getRoomBenefitOfferById/' + $scope.RoomOfferId;
             $http.get(url).success(function (data) {
                 $scope.update = true;
                 $scope.sro = data;
             });
         } else {
-            var url = erpSystem.baseUrl + 'Room_offer/getRoomOfferListByResortId';
+            var url = erpSystem.baseUrl + 'RoomOfferBenefit/getAllRoomOfferBEnefitByResortId';
             $http.get(url).success(function (data) {
                 $scope.RoomOfferList = data;
             });
@@ -1441,10 +1441,10 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
         $scope.saveRoomOffer = function (sro) {
             var url = '';
             if (sro.hasOwnProperty('id')) {
-                url = erpSystem.baseUrl + 'Room_offer/editRoomOffer';
+                url = erpSystem.baseUrl + 'RoomOfferBenefit/editRoomOffer';
             } else {
                 $scope.message = "Operation Successful !!!";
-                url = erpSystem.baseUrl + 'Room_offer/saveRoomOffer';
+                url = erpSystem.baseUrl + 'RoomOfferBenefit/saveRoomOffer';
             }
 
             var postData = $.param({
@@ -1463,9 +1463,9 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
                 boolIsInsert = data.success;
 
                 if (sro.hasOwnProperty('id') && 1 == boolIsInsert) {
-                    $location.url('view-room-offer?update=true&id=' + sro.id);
+                    $location.url('view-room-offer-benefit?update=true&id=' + sro.id);
                 } else {
-                    $location.url('view-room-offer?insert=true');
+                    $location.url('view-room-offer-benefit?insert=true');
                 }
             }).error(function (data, status, headers, config) {
             });
@@ -1474,7 +1474,7 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
          $scope.deleteRoomOffer = function (){
 //            console.log($scope.deleteResortsId);
 
-            var url = erpSystem.baseUrl + 'Room_offer/deleteRoomOffer/' + $scope.deleteRoomOfferId
+            var url = erpSystem.baseUrl + 'RoomOfferBenefit/deleteRoomOffer/' + $scope.deleteRoomOfferId
             $http.delete(url)
             
             .success(function (data) {
@@ -1502,15 +1502,15 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
           //      $scope.employeeTypeList = data.employeeTypeList;
        // });
 
-        if ($routeParams.ResoerPoliciesId) {
-            $scope.RoomOfferId = $routeParams.ResoerPoliciesId;
-            var url = erpSystem.baseUrl + 'Room_offer/getRoomOffer/' + $scope.ResoerPoliciesId;
+        if ($routeParams.ResortPoliciesId) {
+            $scope.ResortPoliciesId = $routeParams.ResortPoliciesId;
+            var url = erpSystem.baseUrl + 'ResortPolicies/getPoliciesByid/' + $scope.ResortPoliciesId;
             $http.get(url).success(function (data) {
                 $scope.update = true;
                 $scope.srp = data;
             });
         } else {
-            var url = erpSystem.baseUrl + 'Room_offer/getRoomOfferListByResortId';
+            var url = erpSystem.baseUrl + 'ResortPolicies/getAllPoliciesByResottId';
             $http.get(url).success(function (data) {
                 $scope.ResortPoliciesList = data;
             });
@@ -1518,11 +1518,11 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
 
         $scope.saveResortPolicies = function (srp) {
             var url = '';
-            if (sro.hasOwnProperty('id')) {
-                url = erpSystem.baseUrl + 'ResortPolicies/editRoomOffer';
+            if (srp.hasOwnProperty('id')) {
+                url = erpSystem.baseUrl + 'ResortPolicies/editResortPolicies';
             } else {
                 $scope.message = "Operation Successful !!!";
-                url = erpSystem.baseUrl + 'ResortPolicies/saveRoomOffer';
+                url = erpSystem.baseUrl + 'ResortPolicies/saveResortPolicies';
             }
 
             var postData = $.param({
@@ -1540,32 +1540,32 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
             $http.post(url, postData, config).success(function (data, status, headers, config) {
                 boolIsInsert = data.success;
 
-                if (sro.hasOwnProperty('id') && 1 == boolIsInsert) {
-                    $location.url('view-room-offer?update=true&id=' + sro.id);
+                if (srp.hasOwnProperty('id') && 1 == boolIsInsert) {
+                    $location.url('view-policies?update=true&id=' + srp.id);
                 } else {
-                    $location.url('view-room-offer?insert=true');
+                    $location.url('view-policies?insert=true');
                 }
             }).error(function (data, status, headers, config) {
             });
 
         }
-         $scope.deleteRoomOffer = function (){
+       $scope.deleteResortPolicies = function (){
 //            console.log($scope.deleteResortsId);
 
-            var url = erpSystem.baseUrl + 'Room_offer/deleteRoomOffer/' + $scope.deleteRoomOfferId
+            var url = erpSystem.baseUrl + 'ResortPolicies/deleteResortPolicies/' + $scope.deleteResortPoliciesId
             $http.delete(url)
             
             .success(function (data) {
                 if (1 == data.success || 1 === data.success) {
-                    var myEl = angular.element(document.querySelector('#row-' + $scope.deleteRoomOfferId));
+                    var myEl = angular.element(document.querySelector('#row-' + $scope.deleteResortPoliciesId));
                     myEl.empty();  //clears contents
                     $('.modal-footer .btn-default').click();
                 }
             });
         }
 
-        $scope.deleteConfirm = function (RoomOfferId) {
-            $scope.deleteRoomOfferId = RoomOfferId;
+        $scope.deleteConfirm = function (ResortPoliciesId) {
+            $scope.deleteResortPoliciesId = ResortPoliciesId;
         }
     }
 ]);

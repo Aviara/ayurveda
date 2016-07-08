@@ -1,6 +1,6 @@
 <?php
 
-class Room_Offer_Model extends CI_Model {
+class RoomOfferBenefit_Model extends CI_Model {
     
     function insert_into_db() {
 //        display($_POST);

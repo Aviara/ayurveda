@@ -11,15 +11,15 @@ class ResortPolicies extends CI_Controller {
         $this->load->view('includes/footer');
     }
 
-    public function getRoomByRoomId($intRoomId) {
-        $query = $this->db->get_where('tbl_rooms', array('id' => $intRoomId));
+    public function getPoliciesById($intResortPoliciesId) {
+        $query = $this->db->get_where('tbl_policies', array('id' => $intResortPoliciesId));
         
-        $arrRoom = array();
+        $arrResortPoliciesId = array();
         foreach ($query->result() as $row) {
-            $arrRoom = $row;
+            $arrResortPoliciesId = $row;
         }
         
-        echo json_encode($arrRoom);
+        echo json_encode($arrResortPoliciesId);
         exit;
     }
     
@@ -60,8 +60,8 @@ class ResortPolicies extends CI_Controller {
         exit;
     }
     
-    public function getRoomListByResortId() {
-        $query = $this->db->get('tbl_rooms');
+    public function getAllPoliciesByResottId() {
+        $query = $this->db->get('tbl_policies');
 
         $arrData = array();
         foreach ($query->result() as $row) {
@@ -88,7 +88,7 @@ class ResortPolicies extends CI_Controller {
         exit;
     }
 
-    public function editroom() {
+    public function editResortPolicies() {
           $this->load->model('ResortPolicies_Model');
         $intInsert = $this->ResortPolicies_Model->updateResortPolicies();
 
@@ -103,9 +103,9 @@ class ResortPolicies extends CI_Controller {
         exit;
     }
 
-    public function deleteRoom($deleteStudent) {
+    public function deleteResortPolicies($deleteRoomPolicies) {
         $this->load->model('ResortPolicies_Model');
-        $boolDeleted = $this->ResortPolicies_Model->delete($deleteStudent);
+        $boolDeleted = $this->ResortPolicies_Model->delete($deleteRoomPolicies);
         
         echo json_encode(array('success' => $boolDeleted));
         exit;

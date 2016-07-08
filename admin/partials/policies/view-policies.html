@@ -36,7 +36,6 @@
                             <tr>
                                 <th>S.N/ID</th>
                                 <th>Resort</th>
-                                <th>Room Number</th>
                                 <th>Heading</th>
                                 <th>Description</th>
                                 <th>Created By</th>
@@ -46,21 +45,20 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr ng-repeat="sro in RoomOfferList track by $index" id="row-{{sro.id}}">
-                                <td>{{sro.id}}</td>
-                                <td>{{sro.resortId}}</td>
-                                <td>{{sro.room_Id}}</td>
-                                <td>{{sro.heading}}</td>
-                                <td>{{sro.description}}</td>
-                                <td>{{sro.Created_by}}</td>
-                                <td>{{sro.Created_on}}</td>
-                                <td>{{sro.Updated_by}}</td>
-                                <td>{{sro.Updated_on}}</td>
+                            <tr ng-repeat="srp in ResortPoliciesList track by $index" id="row-{{srp.id}}">
+                                <td>{{srp.id}}</td>
+                                <td>{{srp.resortId}}</td>
+                                <td>{{srp.heading}}</td>
+                                <td>{{srp.Description}}</td>
+                                <td>{{srp.Created_by}}</td>
+                                <td>{{srp.Created_on}}</td>
+                                <td>{{srp.Updated_by}}</td>
+                                <td>{{srp.Updated_on}}</td>
                                 <td>
-                                    <a class="btn" href="#/add-room-offer/edit/{{sro.id}}">
+                                    <a class="btn" href="#/add-policies/edit/{{srp.id}}">
                                         <i title="Edit" class="fa fa-pencil"></i>
                                     </a>
-                                    <a  data-target=".bs-example-modal-sm" data-toggle="modal" class="btn" id="cancellSweetAlert" ng-click="deleteConfirm(sro.id)">
+                                    <a  data-target=".bs-example-modal-sm" data-toggle="modal" class="btn" id="cancellSweetAlert" ng-click="deleteConfirm(srp.id)">
                                     <i title="Delete" class="fa fa-trash"></i>
                                     </a>
                                 </td>
@@ -78,18 +76,18 @@
                             <button aria-hidden="true" data-dismiss="modal" class="close" type="button">
                                 ×
                             </button>
-                            <h4 id="myLargeModalLabel" class="modal-title">Delete Student</h4>
+                            <h4 id="myLargeModalLabel" class="modal-title">Delete Policies</h4>
                         </div>
                         <div class="modal-body">
                             <p>
-                                Do you want to delete the Employees?
+                                Do you want to delete the Policies?
                             </p>
                         </div>
                         <div class="modal-footer">
                             <button data-dismiss="modal" class="btn btn-default" type="button">
                                 Close
                             </button>
-                            <button class="btn btn-primary" type="button" ng-click="deleteRoomOffer();">
+                            <button class="btn btn-primary" type="button" ng-click="deleteResortPolicies();">
                                 Delete IT!
                             </button>
                         </div>
@@ -99,7 +97,7 @@
             </div>
 
             <div class="col-md-12 center">
-                <a href="#/add-room"><button type="button" class="btn btn-info breadcrumb-button" name="view-listing">Add New Room</button></a>
+                <a href="#/add-policies"><button type="button" class="btn btn-info breadcrumb-button" name="view-listing">Add New Policies</button></a>
             </div>
         </div>
     </div>
