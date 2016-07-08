@@ -10,6 +10,15 @@ class Resorts extends CI_Controller {
         $this->load->view('branches/branches-add');
         $this->load->view('includes/footer');
     }
+    
+    public function uploadfiles(){
+//        display('vfvfvfv');
+//        exit;
+            $this->load->model('resorts_model');
+        $intUploadedFiles = $this->resorts_model->uploadfiles();
+        echo json_encode(array($intUploadedFiles));
+        exit;
+        }
 
     public function getResorts($intEmployeeId) {
         $query = $this->db->get_where('resorts', array('id' => $intEmployeeId));

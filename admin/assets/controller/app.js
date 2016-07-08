@@ -11,6 +11,7 @@ var laundryApp = angular.module('laundryErp', [
     'menuCtrl',
     'clientCtrl',
     'paymentAccount',
+    'angularFileUpload'
 //  'laundryFilters',
 //  'laundryServices'
 ]);

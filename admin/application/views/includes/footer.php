@@ -6,6 +6,7 @@
 <script src="<?php echo BASE_URL; ?>/assets/angularjs/angular.min.js"></script>
 <script src="<?php echo BASE_URL; ?>/assets/angularjs/angular-route.min.js"></script>
 <script src="<?php echo BASE_URL; ?>/assets/angularjs/angular-resource.js"></script>
+<script src="<?php echo BASE_URL; ?>/assets/angularjs/angular-file-upload.js" type="text/javascript"></script>
 
 <script src="<?php echo BASE_URL; ?>/assets/controller/app.js"></script>
 <script src="<?php echo BASE_URL; ?>/assets/controller/controllers.js"></script>

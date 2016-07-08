@@ -1309,8 +1309,8 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
         }
     }
 ])
-.controller('Resorts', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
-    function ($scope, $routeParams, $http, erpSystem, $location) {
+.controller('Resorts', ['$scope', '$routeParams', '$http', 'erpSystem', '$location','$upload', '$timeout',
+    function ($scope, $routeParams, $http, erpSystem, $location, $upload, $timeout) {
 
         $scope.updateData = false;
 
@@ -1334,17 +1334,43 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
             });
         }
 
+ $scope.uploadResult = [];
+        $scope.onFileSelect = function($files) {
+//       alert($files);
+    for (var i = 0; i < $files.length; i++) {
+      var $file = $files[i];
+      $upload.upload({
+        url: erpSystem.baseUrl + 'resorts/uploadfiles/',
+        file: $file,
+        progress: function(e){}
+      }).then(function(response) {
+          $scope.new_name = response.data[0][1];
+//          alert(JSON.stringify(response.data[0][1]));
+        // file is uploaded successfully
+		$timeout(function() {
+					$scope.uploadResult.push(response.data[0][0]);
+//					console.log($scope.uploadResult);
+				});
+      }); 
+    }
+  };
+
         $scope.saveResortsData = function (res) {
             var url = '';
             if (res.hasOwnProperty('id')) {
-                url = erpSystem.baseUrl + 'Resorts/editresorts'
+                url = erpSystem.baseUrl + 'Resorts/editresorts';
             } else {
                 $scope.message = "Operation Successful !!!";
-                url = erpSystem.baseUrl + 'Resorts/saveResortsData'
+                url = erpSystem.baseUrl + 'Resorts/saveResortsData';
             }
 
             var postData = $.param({
-                params: res
+                params: res,
+                file_name : $scope.new_name,
+                place_id:'ChIJv8a-SlENCDsRkkGEpcqC1Qs',
+                xCoordinate:'cvfvf',
+                yCoordinate:'vfvfv'
+                
             });
 
             var config = {
@@ -1386,4 +1412,4 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
             $scope.deleteResortsId = ResortsId;
         }
     }
-]);g
+]);

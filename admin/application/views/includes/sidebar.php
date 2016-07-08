@@ -29,7 +29,7 @@
 							</li>
 							 <!--Resorts Kalpesh start-->
                     
-                                                              <li class="active">
+                                                              <li class="">
                                                                     <a href=""><i class="fa fa-home"></i><span class="title">Resorts</span><span class="label label-success pull-right ">Add/Edit/Delete</span> </a>
                                                                     <ul class="sub-menu">
                                                                        <li><a href="#/add-resorts"><span class="title"> Add Resorts </span><span class="label label-success pull-right ">Add</span></a></li>
@@ -133,7 +133,7 @@
 									</li>
 								</ul>
 							</li>
-							<li class="active open">
+							<li class="">
 								<a href="javascript:void(0)"><i class="fa fa-pencil-square-o"></i> <span class="title"> Forms </span><i class="icon-arrow"></i> </a>
 								<ul class="sub-menu">
 									<li>
