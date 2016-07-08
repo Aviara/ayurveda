@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Resorts_cont extends CI_Controller {
+class Room_offer extends CI_Controller {
 
     public function index() {
         $this->load->view('includes/header');
@@ -11,34 +11,34 @@ class Resorts_cont extends CI_Controller {
         $this->load->view('includes/footer');
     }
 
-    public function getResorts($intEmployeeId) {
-        $query = $this->db->get_where('resorts', array('id' => $intEmployeeId));
+    public function getRoomOffer($intRoomOfferId) {
+        $query = $this->db->get_where('tbl_room_offers_benefites', array('id' => $intRoomOfferId));
         
-        $arrEmployee = array();
+        $arrRoomOffer = array();
         foreach ($query->result() as $row) {
-            $arrEmployee = $row;
+            $arrRoomOffer = $row;
         }
         
-        echo json_encode($arrEmployee);
+        echo json_encode($arrRoomOffer);
         exit;
     }
     
-    public function getEmployeeType($intEmployeeTypeId) {
-        $query = $this->db->get_where('employee_types', array('id' => $intEmployeeTypeId));
-        
-        $arrEmployee = array();
-        foreach ($query->result() as $row) {
-            $arrEmployee = $row;
-        }
-        
-        echo json_encode($arrEmployee);
-        exit;
-    }
+//    public function getEmployeeType($intEmployeeTypeId) {
+//        $query = $this->db->get_where('employee_types', array('id' => $intEmployeeTypeId));
+//        
+//        $arrEmployee = array();
+//        foreach ($query->result() as $row) {
+//            $arrEmployee = $row;
+//        }
+//        
+//        echo json_encode($arrEmployee);
+//        exit;
+//    }
 
-    public function getEmployeeList() {
+    public function getStudddList() {
         $objUser = $this->session->userdata('user');
-        $intCityId = $objUser->city_id;
-        $intBranchId = $objUser->branch_id;
+//        $intCityId = $objUser->city_id;
+//        $intBranchId = $objUser->branch_id;
         
         $this->db->select('e.*, et.id as employee_type_id');
         $this->db->from('employees e');
@@ -56,81 +56,68 @@ class Resorts_cont extends CI_Controller {
             $arrData[$row->id] = $row;
         }
         
-        echo json_encode(array('employeeList' => $arrData));
+        echo json_encode(array('RoomOfferList' => $arrData));
         exit;
     }
     
-    public function getResortsList(){
-        $query = $this->db->get('resorts');
-        
-        $arrData = array();
-        foreach($query->result() as $row){
-             $arrData[] = $row;
-        }
-        
-        echo json_encode($arrData);
-        exit;
-        
-    }
-
-    public function getEmployeeTypeList() {
-        $query = $this->db->get('employee_types');
+    public function getRoomOfferListByResortId() {
+        $query = $this->db->get('tbl_room_offers_benefites');
 
         $arrData = array();
         foreach ($query->result() as $row) {
             $arrData[$row->id] = $row;
         }
-        
-        echo json_encode(array('employeeTypeList' => $arrData));
+      
+        echo json_encode( $arrData);
         exit;
     }
 
-    public function saveResortsData() {
-        $this->load->model('Resorts_model');
-            $intInsert = $this->Resorts_model->insert_into_db();
+    public function saveRoomOffer() {
+        $this->load->model('Room_Offer_Model');
+            $intInsert = $this->Room_Offer_Model->insert_into_db();
 
         echo json_encode(array('success' => $intInsert));
         exit;
     }
     
     public function saveEmployeeType() {
-        $this->load->model('employeetype_model');
-        $intInsert = $this->employeetype_model->insert_into_db();
+        $this->load->model('Room_Offer_Model');
+        $intInsert = $this->Room_Offer_Model->insert_into_db();
 
         echo json_encode(array('success' => $intInsert));
         exit;
     }
 
-    public function editEmployee() {
-          $this->load->model('employee_model');
-        $intInsert = $this->employee_model->updateEmployee();
+    public function editRoomOffer() {
+          $this->load->model('Room_Offer_Model');
+        $intInsert = $this->Room_Offer_Model->updateRoomoffer();
 
         echo json_encode(array('success' => $intInsert));
         exit;
     }
      public function editEmployeeType() {
-          $this->load->model('employeetype_model');
-        $intInsert = $this->employeetype_model->updateEmployeeType();
+          $this->load->model('Room_Offer_Model');
+        $intInsert = $this->Room_Offer_Model->updateEmployeeType();
 
         echo json_encode(array('success' => $intInsert));
         exit;
     }
 
-    public function deleteResorts($deleteResorts) {
-        $this->load->model('Resorts_model');
-        $boolDeleted = $this->Resorts_model->delete($deleteStudent);
+    public function deleteRoomOffer($deleteRoomOffer) {
+        $this->load->model('Room_Offer_Model');
+        $boolDeleted = $this->Room_Offer_Model->delete($deleteRoomOffer);
         
         echo json_encode(array('success' => $boolDeleted));
         exit;
     }
     
-    public function deleteEmployeeType($intEmployeeTypeId) {
-        $this->load->model('employeetype_model');
-        $boolDeleted = $this->employeetype_model->delete($intEmployeeTypeId);
-        
-        echo json_encode(array('success' => $boolDeleted));
-        exit;
-    }
+//    public function deleteEmployeeType($intEmployeeTypeId) {
+//        $this->load->model('employeetype_model');
+//        $boolDeleted = $this->employeetype_model->delete($intEmployeeTypeId);
+//        
+//        echo json_encode(array('success' => $boolDeleted));
+//        exit;
+//    }
     
     public function getManagers() {
         $query = $this->db->get_where('employees', array('employee_type_id' => 1));
@@ -143,7 +130,7 @@ class Resorts_cont extends CI_Controller {
         echo json_encode($arrEmployeeManagers);
         exit;
     }
-public function downloadEmployeeDetails() {
+public function downloadStudentDetails() {
 
         //$this->load->library('phpexcel');
         require_once APPPATH . "third_party/PHPExcel.php";
@@ -160,59 +147,20 @@ public function downloadEmployeeDetails() {
 
         $objPHPExcel->setActiveSheetIndex(0)
                 ->setCellValue('A1', 'ID')
-                ->setCellValue('B1', 'Branch Id')
-                ->setCellValue('C1', 'First Name')
-                ->setCellValue('D1', 'Middle Name')
-                ->setCellValue('E1', 'Last Name')
-                ->setCellValue('F1', 'Employeen Type Id')
-                ->setCellValue('G1', 'Pan No')
-                ->setCellValue('H1', 'Address Line 1')
-                ->setCellValue('I1', 'Address Line 2')
-                ->setCellValue('J1', 'Driving License No')
-                ->setCellValue('K1', 'Adhar No')
-                ->setCellValue('L1', 'Age ')
-                ->setCellValue('M1', 'Birth Date')
-                ->setCellValue('N1', 'Gender')
-                ->setCellValue('O1', 'Email Id')
-                ->setCellValue('P1', 'Office Email Id')
-                ->setCellValue('Q1', 'City')
-                ->setCellValue('R1', 'Location')
-                ->setCellValue('S1', 'Area')
-                ->setCellValue('T1', 'Mobile No')
-                ->setCellValue('U1', 'Home No')
-                ->setCellValue('V1', 'Created by')
-                ->setCellValue('W1', 'Created On');
+                ->setCellValue('B1', 'Name')
+                ->setCellValue('C1', 'Mobile No');
                 
         /* Paymenet details and render into sheet Code is Strat From Here */
-        $this->load->model('employee_model');
-        $arrobjEmployee = $this->employee_model->downloadEmployeeDetails();
+        $this->load->model('stud_model');
+        $arrobjStudent = $this->stud_model->downloadStudentDetails();
 
         $rowid = 2;
-        foreach ($arrobjEmployee as $objEmployee) {
+        foreach ($arrobjStudent as $objEmployee) {
             $objPHPExcel->setActiveSheetIndex(0)
                     ->setCellValue('A' . $rowid, $objEmployee->id)
-                    ->setCellValue('B' . $rowid, $objEmployee->branch_id)
-                    ->setCellValue('C' . $rowid, $objEmployee->first_name)
-                    ->setCellValue('D' . $rowid, $objEmployee->middle_name)
-                    ->setCellValue('E' . $rowid, $objEmployee->last_name)
-                    ->setCellValue('F' . $rowid, $objEmployee->employee_type_id)
-                    ->setCellValue('G' . $rowid, $objEmployee->pan_no)
-                    ->setCellValue('H' . $rowid, $objEmployee->address_line1)
-                    ->setCellValue('I' . $rowid, $objEmployee->address_line2)
-                    ->setCellValue('J' . $rowid, $objEmployee->driving_listien_no)
-                    ->setCellValue('K' . $rowid, $objEmployee->adhar_no)
-                    ->setCellValue('L' . $rowid, $objEmployee->age)
-                    ->setCellValue('M' . $rowid, $objEmployee->birth_date)
-                    ->setCellValue('N' . $rowid, $objEmployee->gender)
-                    ->setCellValue('O' . $rowid, $objEmployee->email_id)
-                    ->setCellValue('P' . $rowid, $objEmployee->office_email_id)
-                    ->setCellValue('Q' . $rowid, $objEmployee->city)
-                    ->setCellValue('R' . $rowid, $objEmployee->location)
-                    ->setCellValue('S' . $rowid, $objEmployee->area)
-                    ->setCellValue('T' . $rowid, $objEmployee->mobile_no)
-                    ->setCellValue('U' . $rowid, $objEmployee->home_no)
-                    ->setCellValue('V' . $rowid, $objEmployee->created_by)
-                    ->setCellValue('W' . $rowid, $objEmployee->created_on);
+                    ->setCellValue('B' . $rowid, $objEmployee->First_name)
+                    ->setCellValue('C' . $rowid, $objEmployee->Mob_no);
+                   
                  $rowid++;
         }
 

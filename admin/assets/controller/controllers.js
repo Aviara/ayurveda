@@ -1386,4 +1386,160 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
             $scope.deleteResortsId = ResortsId;
         }
     }
+])
+.controller('add-offer', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
+    function ($scope, $routeParams, $http, erpSystem, $location) {
+
+        $scope.updateData = false;
+
+       // var url = erpSystem.baseUrl + 'employee/getEmployeeTypeList';
+      
+      //  $http.get(url).success(function (data) {
+          //      $scope.employeeTypeList = data.employeeTypeList;
+       // });
+
+        if ($routeParams.RoomOfferId) {
+            $scope.RoomOfferId = $routeParams.RoomOfferId;
+            var url = erpSystem.baseUrl + 'Room_offer/getRoomOffer/' + $scope.RoomOfferId;
+            $http.get(url).success(function (data) {
+                $scope.update = true;
+                $scope.sro = data;
+            });
+        } else {
+            var url = erpSystem.baseUrl + 'Room_offer/getRoomOfferListByResortId';
+            $http.get(url).success(function (data) {
+                $scope.RoomOfferList = data;
+            });
+        }
+
+        $scope.saveRoomOffer = function (sro) {
+            var url = '';
+            if (sro.hasOwnProperty('id')) {
+                url = erpSystem.baseUrl + 'Room_offer/editRoomOffer';
+            } else {
+                $scope.message = "Operation Successful !!!";
+                url = erpSystem.baseUrl + 'Room_offer/saveRoomOffer';
+            }
+
+            var postData = $.param({
+                params: sro
+            });
+
+            var config = {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                }
+            };
+
+            var boolIsInsert = false;
+
+            $http.post(url, postData, config).success(function (data, status, headers, config) {
+                boolIsInsert = data.success;
+
+                if (sro.hasOwnProperty('id') && 1 == boolIsInsert) {
+                    $location.url('view-room-offer?update=true&id=' + sro.id);
+                } else {
+                    $location.url('view-room-offer?insert=true');
+                }
+            }).error(function (data, status, headers, config) {
+            });
+
+        }
+         $scope.deleteRoomOffer = function (){
+//            console.log($scope.deleteResortsId);
+
+            var url = erpSystem.baseUrl + 'Room_offer/deleteRoomOffer/' + $scope.deleteRoomOfferId
+            $http.delete(url)
+            
+            .success(function (data) {
+                if (1 == data.success || 1 === data.success) {
+                    var myEl = angular.element(document.querySelector('#row-' + $scope.deleteRoomOfferId));
+                    myEl.empty();  //clears contents
+                    $('.modal-footer .btn-default').click();
+                }
+            });
+        }
+
+        $scope.deleteConfirm = function (RoomOfferId) {
+            $scope.deleteRoomOfferId = RoomOfferId;
+        }
+    }
+])
+.controller('add-policies', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
+    function ($scope, $routeParams, $http, erpSystem, $location) {
+
+        $scope.updateData = false;
+
+       // var url = erpSystem.baseUrl + 'employee/getEmployeeTypeList';
+      
+      //  $http.get(url).success(function (data) {
+          //      $scope.employeeTypeList = data.employeeTypeList;
+       // });
+
+        if ($routeParams.ResoerPoliciesId) {
+            $scope.RoomOfferId = $routeParams.ResoerPoliciesId;
+            var url = erpSystem.baseUrl + 'Room_offer/getRoomOffer/' + $scope.ResoerPoliciesId;
+            $http.get(url).success(function (data) {
+                $scope.update = true;
+                $scope.srp = data;
+            });
+        } else {
+            var url = erpSystem.baseUrl + 'Room_offer/getRoomOfferListByResortId';
+            $http.get(url).success(function (data) {
+                $scope.ResortPoliciesList = data;
+            });
+        }
+
+        $scope.saveResortPolicies = function (srp) {
+            var url = '';
+            if (sro.hasOwnProperty('id')) {
+                url = erpSystem.baseUrl + 'ResortPolicies/editRoomOffer';
+            } else {
+                $scope.message = "Operation Successful !!!";
+                url = erpSystem.baseUrl + 'ResortPolicies/saveRoomOffer';
+            }
+
+            var postData = $.param({
+                params: srp
+            });
+
+            var config = {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                }
+            };
+
+            var boolIsInsert = false;
+
+            $http.post(url, postData, config).success(function (data, status, headers, config) {
+                boolIsInsert = data.success;
+
+                if (sro.hasOwnProperty('id') && 1 == boolIsInsert) {
+                    $location.url('view-room-offer?update=true&id=' + sro.id);
+                } else {
+                    $location.url('view-room-offer?insert=true');
+                }
+            }).error(function (data, status, headers, config) {
+            });
+
+        }
+         $scope.deleteRoomOffer = function (){
+//            console.log($scope.deleteResortsId);
+
+            var url = erpSystem.baseUrl + 'Room_offer/deleteRoomOffer/' + $scope.deleteRoomOfferId
+            $http.delete(url)
+            
+            .success(function (data) {
+                if (1 == data.success || 1 === data.success) {
+                    var myEl = angular.element(document.querySelector('#row-' + $scope.deleteRoomOfferId));
+                    myEl.empty();  //clears contents
+                    $('.modal-footer .btn-default').click();
+                }
+            });
+        }
+
+        $scope.deleteConfirm = function (RoomOfferId) {
+            $scope.deleteRoomOfferId = RoomOfferId;
+        }
+    }
 ]);
