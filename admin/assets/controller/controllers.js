@@ -1322,7 +1322,7 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
 
         if ($routeParams.resortId) {
             $scope.resortId = $routeParams.resortId;
-            var url = erpSystem.baseUrl + 'Resorts/getResorts/' + $scope.resortId;
+            var url = erpSystem.baseUrl + 'Resorts/getResortByResortId/' + $scope.resortId;
             $http.get(url).success(function (data) {
                 $scope.update = true;
                 $scope.res = data;
@@ -1358,7 +1358,7 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
         $scope.saveResortsData = function (res) {
             var url = '';
             if (res.hasOwnProperty('id')) {
-                url = erpSystem.baseUrl + 'Resorts/editresorts';
+                url = erpSystem.baseUrl + 'Resorts/editResortData';
             } else {
                 $scope.message = "Operation Successful !!!";
                 url = erpSystem.baseUrl + 'Resorts/saveResortsData';
@@ -1385,9 +1385,9 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
                 boolIsInsert = data.success;
 
                 if (res.hasOwnProperty('id') && 1 == boolIsInsert) {
-                    $location.url('view-employees?update=true&id=' + res.id);
+                    $location.url('view-resorts?update=true&id=' + res.id);
                 } else {
-                    $location.url('view-employees?insert=true');
+                    $location.url('view-resorts?insert=true');
                 }
             }).error(function (data, status, headers, config) {
             });
@@ -1396,7 +1396,7 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
          $scope.deleteResorts = function (){
 //            console.log($scope.deleteResortsId);
 
-            var url = erpSystem.baseUrl + 'res/deleteResorts/' + $scope.deleteStudentId
+            var url = erpSystem.baseUrl + 'resorts/deleteResort/' + $scope.deleteResortsId;
             $http.delete(url)
             
             .success(function (data) {
