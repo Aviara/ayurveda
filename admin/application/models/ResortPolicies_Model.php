@@ -10,7 +10,7 @@ class ResortPolicies_Model extends CI_Model {
         
        // $arrPostData = $_POST['params'];
         
-        $strResort              = (true == isset($arrPostData['resortId']) && true == valStr($arrPostData['resortId'])) ? $arrPostData['resortId'] : NULL;
+        $strResort              = (true == isset($arrPostData['heading']) && true == valStr($arrPostData['heading'])) ? $arrPostData['heading'] : NULL;
         $strroomTypeId          = (true == isset($arrPostData['roomTypeId']) && true == valStr($arrPostData['roomTypeId'])) ? $arrPostData['roomTypeId'] : NULL;
         
 //         if($this->session->userdata('id') == 1){

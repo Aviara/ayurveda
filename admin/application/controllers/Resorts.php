@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Resorts_cont extends CI_Controller {
+class Resorts extends CI_Controller {
 
     public function index() {
         $this->load->view('includes/header');
@@ -10,9 +10,18 @@ class Resorts_cont extends CI_Controller {
         $this->load->view('branches/branches-add');
         $this->load->view('includes/footer');
     }
+    
+    public function uploadfiles(){
+//        display('vfvfvfv');
+//        exit;
+            $this->load->model('resorts_model');
+        $intUploadedFiles = $this->resorts_model->uploadfiles();
+        echo json_encode(array($intUploadedFiles));
+        exit;
+        }
 
-    public function getResorts($intEmployeeId) {
-        $query = $this->db->get_where('resorts', array('id' => $intEmployeeId));
+    public function getResortByResortId($intResortId) {
+        $query = $this->db->get_where('tbl_resorts', array('id' => $intResortId));
         
         $arrEmployee = array();
         foreach ($query->result() as $row) {
@@ -60,8 +69,8 @@ class Resorts_cont extends CI_Controller {
         exit;
     }
     
-    public function getResortsList(){
-        $query = $this->db->get('resorts');
+    public function getAllResorts(){
+        $query = $this->db->get('tbl_resorts');
         
         $arrData = array();
         foreach($query->result() as $row){
@@ -101,9 +110,9 @@ class Resorts_cont extends CI_Controller {
         exit;
     }
 
-    public function editEmployee() {
-          $this->load->model('employee_model');
-        $intInsert = $this->employee_model->updateEmployee();
+    public function editResortData() {
+          $this->load->model('resorts_model');
+        $intInsert = $this->resorts_model->updateResort();
 
         echo json_encode(array('success' => $intInsert));
         exit;
@@ -116,9 +125,9 @@ class Resorts_cont extends CI_Controller {
         exit;
     }
 
-    public function deleteResorts($deleteResorts) {
+    public function deleteResort($ResortsId) {
         $this->load->model('Resorts_model');
-        $boolDeleted = $this->Resorts_model->delete($deleteStudent);
+        $boolDeleted = $this->Resorts_model->delete($ResortsId);
         
         echo json_encode(array('success' => $boolDeleted));
         exit;

@@ -1309,8 +1309,8 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
         }
     }
 ])
-.controller('Resorts', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
-    function ($scope, $routeParams, $http, erpSystem, $location) {
+.controller('Resorts', ['$scope', '$routeParams', '$http', 'erpSystem', '$location','$upload', '$timeout',
+    function ($scope, $routeParams, $http, erpSystem, $location, $upload, $timeout) {
 
         $scope.updateData = false;
 
@@ -1320,31 +1320,57 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
           //      $scope.employeeTypeList = data.employeeTypeList;
        // });
 
-        if ($routeParams.resId) {
-            $scope.resId = $routeParams.resId;
-            var url = erpSystem.baseUrl + 'Resorts_cont/getResorts/' + $scope.resId;
+        if ($routeParams.resortId) {
+            $scope.resortId = $routeParams.resortId;
+            var url = erpSystem.baseUrl + 'Resorts/getResortByResortId/' + $scope.resortId;
             $http.get(url).success(function (data) {
                 $scope.update = true;
                 $scope.res = data;
             });
         } else {
-            var url = erpSystem.baseUrl + 'Resorts_cont/getResortsList';
+            var url = erpSystem.baseUrl + 'Resorts/getAllResorts';
             $http.get(url).success(function (data) {
                 $scope.ResortsList = data;
             });
         }
 
+ $scope.uploadResult = [];
+        $scope.onFileSelect = function($files) {
+//       alert($files);
+    for (var i = 0; i < $files.length; i++) {
+      var $file = $files[i];
+      $upload.upload({
+        url: erpSystem.baseUrl + 'resorts/uploadfiles/',
+        file: $file,
+        progress: function(e){}
+      }).then(function(response) {
+          $scope.new_name = response.data[0][1];
+//          alert(JSON.stringify(response.data[0][1]));
+        // file is uploaded successfully
+		$timeout(function() {
+					$scope.uploadResult.push(response.data[0][0]);
+//					console.log($scope.uploadResult);
+				});
+      }); 
+    }
+  };
+
         $scope.saveResortsData = function (res) {
             var url = '';
             if (res.hasOwnProperty('id')) {
-                url = erpSystem.baseUrl + 'Resorts_cont/editresorts'
+                url = erpSystem.baseUrl + 'Resorts/editResortData';
             } else {
                 $scope.message = "Operation Successful !!!";
-                url = erpSystem.baseUrl + 'Resorts_cont/saveResortsData'
+                url = erpSystem.baseUrl + 'Resorts/saveResortsData';
             }
 
             var postData = $.param({
-                params: res
+                params: res,
+                file_name : $scope.new_name,
+                place_id:'ChIJv8a-SlENCDsRkkGEpcqC1Qs',
+                xCoordinate:'cvfvf',
+                yCoordinate:'vfvfv'
+                
             });
 
             var config = {
@@ -1359,9 +1385,9 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
                 boolIsInsert = data.success;
 
                 if (res.hasOwnProperty('id') && 1 == boolIsInsert) {
-                    $location.url('view-employees?update=true&id=' + res.id);
+                    $location.url('view-resorts?update=true&id=' + res.id);
                 } else {
-                    $location.url('view-employees?insert=true');
+                    $location.url('view-resorts?insert=true');
                 }
             }).error(function (data, status, headers, config) {
             });
@@ -1370,7 +1396,7 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
          $scope.deleteResorts = function (){
 //            console.log($scope.deleteResortsId);
 
-            var url = erpSystem.baseUrl + 'res/deleteResorts/' + $scope.deleteStudentId
+            var url = erpSystem.baseUrl + 'resorts/deleteResort/' + $scope.deleteResortsId;
             $http.delete(url)
             
             .success(function (data) {

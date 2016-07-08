@@ -18,7 +18,7 @@
                     </ol>
                 </div>
                 <div class="col-md-9">
-                    <a href="#/addresorts"><button type="button" class="btn btn-success breadcrumb-button" name="view-listing">Add New Resorts</button></a>
+                    <a href="#/add-resorts"><button type="button" class="btn btn-success breadcrumb-button" name="view-listing">Add New Resorts</button></a>
                 </div>
             </div>
             <div class="panel panel-white" style="overflow-y: hidden;">
@@ -35,14 +35,12 @@
                         <thead>
                             <tr>
                                 <th>S.N/ID</th>
-                                <th class="hidden-xs">First Name</th>
-                                <th>Middle Name</th>
-                                <th>Last Name</th>
-                                <th>Country Id</th>
+                                <th>Resort Name</th>
+                                <th>Place Id</th>
+<!--                                <th>Country Id</th>
                                 <th>State Id</th>
-                                <th>City Id</th>
-                                <th>Address Line1</th>
-                                <th>Star Rating</th>
+                                <th>City Id</th>-->
+                                <th>Address</th>
                                 <th>Description</th>
                                 <th>X-coordinate</th>
                                 <th>Y-Coordinate</th>
@@ -51,19 +49,17 @@
                         <tbody>
                             <tr ng-repeat="res in ResortsList track by $index" id="row-{{res.id}}">
                                 <td>{{res.id}}</td>
-                                <td class="hidden-xs">{{res.First_name}}</td>
-                                <td>{{res.Middle_name}}</td>
-                                <td>{{res.Last_name}}</td>
-                                <td>{{res.Country_id}}</td>
+                                <td>{{res.name}}</td>
+                                <td>{{res.place_id}}</td>
+                            <!--<td>{{res.Country_id}}</td>
                                 <td>{{res.State_id}}</td>
-                                <td>{{res.City_id}}</td>
-                                <td>{{res.Address}}</td>
-                                <td>{{res.Star_rating}}</td>
-                                <td>{{res.Description}}</td>
-                                <td>{{res.Xcoordinate}}</td>
-                                <td>{{res.Ycoordinate}}</td>
+                                <td>{{res.City_id}}</td>-->
+                                <td>{{res.address}}</td>
+                                <td>{{res.description}}</td>
+                                <td>{{res.xCoordinate}}</td>
+                                <td>{{res.yCoordinate}}</td>
                                 <td>
-                                    <a class="btn" href="#/addresorts/edit/{{res.id}}">
+                                    <a class="btn" href="#/add-resorts/edit/{{res.id}}">
                                         <i title="Edit" class="fa fa-pencil"></i>
                                     </a>
                                     <a  data-target=".bs-example-modal-sm" data-toggle="modal" class="btn" id="cancellSweetAlert" ng-click="deleteConfirm(res.id)">
@@ -105,7 +101,7 @@
             </div>
 
             <div class="col-md-12 center">
-                <a href="#/addresorts"><button type="button" class="btn btn-info breadcrumb-button" name="view-listing">Add New Resorts </button></a>
+                <a href="#/add-resorts"><button type="button" class="btn btn-info breadcrumb-button" name="view-listing">Add New Resorts </button></a>
             </div>
         </div>
     </div>
