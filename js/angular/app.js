@@ -42,7 +42,7 @@ resortApp.config(['$routeProvider',
         var baseUrlLink = 'http://localhost/ayurveda/';
 
         $routeProvider.
-                
+                //hfjtgfjghf
                 when('/', {
                     templateUrl: baseUrlLink + 'partials/homepage.html',
                     controller: 'Home',
