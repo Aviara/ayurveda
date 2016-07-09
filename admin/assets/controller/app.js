@@ -306,21 +306,33 @@ laundryApp.config(['$routeProvider',
                 }).
                      when('/add-room-offer', {
                     templateUrl: baseUrlLink + 'partials/hotel_rooms/add-room-offer.html',
-                    controller: 'add-offer'
+                    controller: 'add-offer-benefit'
                 }).
                      when('/add-room-offer/edit/:RoomOfferId', {
                     templateUrl: baseUrlLink + 'partials/hotel_rooms/add-room-offer.html',
-                    controller: 'add-offer'
+                    controller: 'add-offer-benefit'
                 }).
-                    when('/view-room-offer',{
+                     when('/view-room-offer',{
                     templateUrl: baseUrlLink + 'partials/hotel_rooms/view-room-offer.html',
-                    controller: 'add-offer'
+                    controller: 'add-offer-benefit'
                 }).
-                    when('/add-policies',{
+                     when('/add-policies',{
                     templateUrl: baseUrlLink + 'partials/policies/add-policies.html',
                     controller: 'add-policies'
+<<<<<<< HEAD
                 }).     
                     
+=======
+                }).
+                     when('/view-policies',{
+                    templateUrl: baseUrlLink + 'partials/policies/view-policies.html',
+                    controller: 'add-policies'
+                }). 
+                     when('/add-policies/edit/:ResortPoliciesId',{
+                    templateUrl: baseUrlLink + 'partials/policies/add-policies.html',
+                    controller: 'add-policies'
+                }).
+>>>>>>> 6e1df09148d742fed3ab11177ff07498be5a4746
                 otherwise({
                     redirectTo: '/dashbord'
 

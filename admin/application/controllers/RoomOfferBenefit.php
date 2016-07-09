@@ -2,7 +2,7 @@
 
 defined('BASEPATH') OR exit('No direct script access allowed');
 
-class Room_offer extends CI_Controller {
+class RoomOfferBenefit extends CI_Controller {
 
     public function index() {
         $this->load->view('includes/header');
@@ -11,7 +11,7 @@ class Room_offer extends CI_Controller {
         $this->load->view('includes/footer');
     }
 
-    public function getRoomOffer($intRoomOfferId) {
+    public function getRoomBenefitOfferById($intRoomOfferId) {
         $query = $this->db->get_where('tbl_room_offers_benefites', array('id' => $intRoomOfferId));
         
         $arrRoomOffer = array();
@@ -60,7 +60,7 @@ class Room_offer extends CI_Controller {
         exit;
     }
     
-    public function getRoomOfferListByResortId() {
+    public function getAllRoomOfferBenefitByResortId() {
         $query = $this->db->get('tbl_room_offers_benefites');
 
         $arrData = array();
@@ -73,8 +73,8 @@ class Room_offer extends CI_Controller {
     }
 
     public function saveRoomOffer() {
-        $this->load->model('Room_Offer_Model');
-            $intInsert = $this->Room_Offer_Model->insert_into_db();
+        $this->load->model('RoomOfferBenefit_Model');
+            $intInsert = $this->RoomOfferBenefit_Model->insert_into_db();
 
         echo json_encode(array('success' => $intInsert));
         exit;
@@ -89,8 +89,8 @@ class Room_offer extends CI_Controller {
     }
 
     public function editRoomOffer() {
-          $this->load->model('Room_Offer_Model');
-        $intInsert = $this->Room_Offer_Model->updateRoomoffer();
+          $this->load->model('RoomOfferBenefit_Model');
+        $intInsert = $this->RoomOfferBenefit_Model->updateRoomoffer();
 
         echo json_encode(array('success' => $intInsert));
         exit;
@@ -104,8 +104,8 @@ class Room_offer extends CI_Controller {
     }
 
     public function deleteRoomOffer($deleteRoomOffer) {
-        $this->load->model('Room_Offer_Model');
-        $boolDeleted = $this->Room_Offer_Model->delete($deleteRoomOffer);
+        $this->load->model('RoomOfferBenefit_Model');
+        $boolDeleted = $this->RoomOfferBenefit_Model->delete($deleteRoomOffer);
         
         echo json_encode(array('success' => $boolDeleted));
         exit;
