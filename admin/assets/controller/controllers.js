@@ -1646,7 +1646,7 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
         }
     }
 ])
-.controller('add-policies', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
+.controller('Resort-Policies', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
     function ($scope, $routeParams, $http, erpSystem, $location) {
 
         $scope.updateData = false;

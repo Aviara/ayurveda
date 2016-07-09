@@ -56,19 +56,19 @@
                             <tr ng-repeat="hrm in RoomList track by $index" id="row-{{hrm.id}}">
                                 <td>{{hrm.id}}</td>
                                 <td>{{hrm.resortId}}</td>
-                                <td>{{hrm.roomTypeId}}</td>
-                                <td>{{hrm.costForExtraBed}}</td>
-                                <td>{{hrm.roomNumber}}</td>
-                                <td>{{hrm.costPerNight}}</td>
+                                <td>{{hrm.roomno}}</td>
+                                <td>{{hrm.room_type_Id}}</td>
+                                <td>{{hrm.Status}}</td>
+                                <td>{{hrm.Number_of_beds}}</td>
+                                <td>{{hrm.Cost_for_extra_bed}}</td>
+                                <td>{{hrm.Cost_per_night}}</td>
                                 <td>{{hrm.size}}</td>
-                                <td>{{hrm.bedDiscription}}</td>
-                                <td>{{hrm.view}}</td>
-                                <td>{{hrm.noofRooms}}</td>
-                                <td>{{hrm.roomStatus}}</td>
-                                <td>{{hrm.createdBy}}</td>
-                                <td>{{hrm.createdOn}}</td>
-                                <td>{{hrm.updatedBy}}</td>
-                                <td>{{hrm.updatedOn}}</td>
+                                <td>{{hrm.Description}}</td>
+                                <td>{{hrm.Window_view}}</td>
+                                <td>{{hrm.Created_by}}</td>
+                                <td>{{hrm.Created_on}}</td>
+                                <td>{{hrm.Updated_by}}</td>
+                                <td>{{hrm.Updated_on}}</td>
                                 <td>
                                     <a class="btn" href="#/add-room/edit/{{hrm.id}}">
                                         <i title="Edit" class="fa fa-pencil"></i>

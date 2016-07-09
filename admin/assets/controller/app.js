@@ -330,15 +330,15 @@ laundryApp.config(['$routeProvider',
                 }).
                      when('/add-policies',{
                     templateUrl: baseUrlLink + 'partials/policies/add-policies.html',
-                    controller: 'add-policies'
+                    controller: 'Resort-Policies'
                 }).     
                       when('/view-policies',{
                     templateUrl: baseUrlLink + 'partials/policies/view-policies.html',
-                    controller: 'add-policies'
+                    controller: 'Resort-Policies'
                 }). 
                      when('/add-policies/edit/:ResortPoliciesId',{
                     templateUrl: baseUrlLink + 'partials/policies/add-policies.html',
-                    controller: 'add-policies'
+                    controller: 'Resort-Policies'
                 }).
                 otherwise({
                     redirectTo: '/dashbord'
