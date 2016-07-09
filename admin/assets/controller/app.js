@@ -1,4 +1,4 @@
-'use strict';
+    'use strict';
 
 /* App Module */
 
@@ -296,6 +296,14 @@ laundryApp.config(['$routeProvider',
                     templateUrl: baseUrlLink + 'partials/resorts/add-resorts.html',
                     controller: 'Resorts'
                 }).
+                     when('/insert-resort-images/', {
+                    templateUrl: baseUrlLink + 'partials/resorts/insert-resort-images.html',
+                    controller: 'Images'
+                }).
+                    when('/view-gallery-images', {
+                    templateUrl: baseUrlLink + 'partials/images/view-gallery-images.html',
+                    controller: 'Images'
+                }).
                      when('/add-room-offer', {
                     templateUrl: baseUrlLink + 'partials/hotel_rooms/add-room-offer.html',
                     controller: 'add-offer'
@@ -312,6 +320,7 @@ laundryApp.config(['$routeProvider',
                     templateUrl: baseUrlLink + 'partials/policies/add-policies.html',
                     controller: 'add-policies'
                 }).     
+                    
                 otherwise({
                     redirectTo: '/dashbord'
 
