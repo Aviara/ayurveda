@@ -1226,7 +1226,7 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
         $scope.items = ["Apple", "Banana", "Orange"];
     }
 ])
-.controller('Rooms', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
+.controller('add_room', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
     function ($scope, $routeParams, $http, erpSystem, $location) {
 
         $scope.updateData = false;
@@ -1248,10 +1248,6 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
             var url = erpSystem.baseUrl + 'Rooms/getRoomListByResortId';
             $http.get(url).success(function (data) {
                 $scope.RoomList = data;
-            });
-            var url = erpSystem.baseUrl + 'Rooms/getAllRoomTypesByResortId';
-            $http.get(url).success(function (data) {
-                $scope.roomTypeList = data.roomTypeList;
             });
         }
 
@@ -1310,99 +1306,6 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
 
         $scope.deleteConfirm = function (RoomId) {
             $scope.deleteRoomId = RoomId;
-        }
-    }
-])
-.controller('RoomType', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
-    function ($scope, $routeParams, $http, erpSystem, $location) {
-
-        if ($routeParams.roomTypeId) {
-            $scope.updateData = true;
-            $scope.roomTypeId = $routeParams.roomTypeId;
-            var url = erpSystem.baseUrl + 'Rooms/getroomType/' + $scope.roomTypeId;
-            $http.get(url).success(function (data) {
-                $scope.roomType = data;
-            });
-        } else {
-            $scope.updateData = false;
-
-            var url = erpSystem.baseUrl + 'Rooms/getAllRoomType';
-            $http.get(url).success(function (data) {
-                $scope.roomTypeList = data.roomTypeList;
-            });
-        }
-        $scope.saveroomTypeData = function (srt) {
-            var url = erpSystem.baseUrl + 'Rooms/saveroomType';
-
-            if (employee.hasOwnProperty('id')) {
-                url = erpSystem.baseUrl + 'Rooms/editroomTypeId';
-            }
-            var postData = $.param({
-                params: srt
-            });
-
-            var config = {
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-                }
-            };
-
-            var boolIsInsert = false;
-
-            // var url = erpSystem.baseUrl + 'employee/saveEmployeeType';
-            $http.post(url, postData, config).success(function (data, status, headers, config) {
-                boolIsInsert = data.success;
-
-                if (true == boolIsInsert || 1 == boolIsInsert) {
-                    if (employee.hasOwnProperty('id')) {
-                        $scope.message = "Operation Successful !!";
-                        $location.url('view-employee-types?update=true&id=' + srt.id);
-                    } else {
-                        $scope.message = "Operation Successful !!";
-                        $location.url('view-employee-types?insert=true');
-                    }
-                }
-            }).error(function (data, status, headers, config) {
-            });
-
-        }
-
-        //$scope.update = false;
-
-        if ($routeParams.roomTypeId) {
-            $scope.roomTypeId = $routeParams.roomTypeId;
-            var url = erpSystem.baseUrl + 'Rooms/getAllRoomType/' + $scope.roomTypeId;
-            $http.get(url).success(function (data) {
-                $scope.update = true;
-                $scope.roomTypeDetails = data;
-            });
-        } else {
-            var url = erpSystem.baseUrl + 'Rooms/getAllRoomType';
-            $http.get(url).success(function (data) {
-                $scope.roomTypeList = data.roomTypeList;
-            });
-        }
-
-        $scope.editMenu = function () {
-//            $routeParams
-        }
-
-        $scope.deleteRoomType = function () {
-            console.log($scope.deleteRoomTypeId);
-
-            var url = erpSystem.baseUrl + 'Rooms/deleteRoomType/' + $scope.deleteRoomTypeId
-            $http.delete(url).success(function (data) {
-                if (1 == data.success || 1 === data.success) {
-                    var myEl = angular.element(document.querySelector('#row-' + $scope.deleteRoomTypeId));
-                    myEl.empty();  //clears contents
-
-                    $('.modal-footer .btn-default').click();
-                }
-            });
-        }
-
-        $scope.deleteConfirm = function (RoomTypeId) {
-            $scope.deleteRoomTypeId = RoomTypeId;
         }
     }
 ])
@@ -1510,6 +1413,7 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
         }
     }
 ])
+<<<<<<< HEAD
 .controller('Images', ['$scope', '$routeParams', '$http', 'erpSystem','$upload','$timeout',
     function ($scope, $routeParams, $http, erpSystem, $upload, $timeout) {
         
@@ -1567,12 +1471,14 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
             
         };
 
+    
 
     }
 ])
-
+.controller('add-offer', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
+=======
 .controller('add-offer-benefit', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
-
+>>>>>>> 6e1df09148d742fed3ab11177ff07498be5a4746
     function ($scope, $routeParams, $http, erpSystem, $location) {
 
         $scope.updateData = false;
@@ -1622,9 +1528,9 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
                 boolIsInsert = data.success;
 
                 if (sro.hasOwnProperty('id') && 1 == boolIsInsert) {
-                    $location.url('view-room-offer?update=true');
+                    $location.url('view-room-offer-benefit?update=true&id=' + sro.id);
                 } else {
-                    $location.url('view-room-offer?insert=true');
+                    $location.url('view-room-offer-benefit?insert=true');
                 }
             }).error(function (data, status, headers, config) {
             });

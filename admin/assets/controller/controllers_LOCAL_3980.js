@@ -1510,69 +1510,7 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
         }
     }
 ])
-.controller('Images', ['$scope', '$routeParams', '$http', 'erpSystem','$upload','$timeout',
-    function ($scope, $routeParams, $http, erpSystem, $upload, $timeout) {
-        
-   $scope.uploadResult = [];
-   $scope.base_url = erpSystem.baseUrl; 
-     
-   $scope.onFileSelect = function($files) {
-//       alert();
-    for (var i = 0; i < $files.length; i++) {
-      var $file = $files[i];
-      $upload.upload({
-        url: erpSystem.baseUrl + 'Images/uploadfiles/',
-        file: $file,
-        progress: function(e){}
-      }).then(function(response) {
-        // file is uploaded successfully
-		$timeout(function() {
-					$scope.uploadResult.push(response.data[0]);
-					console.log($scope.uploadResult);
-				});
-      }); 
-    }
-  };
-  
-  var url = erpSystem.baseUrl + 'Images/getAllImages';
-        $http.get(url).success(function (data) {
-            $scope.allImages = data;
-        });
-
-         $scope.deleteImage = function () {
-//            console.log($scope.deleteMenuId);
-
-            var url = erpSystem.baseUrl + 'Images/deleteImage/' + $scope.deleteMenuId
-            $http.delete(url).success(function (data) {
-                if (1 == data.success || 1 === data.success) {
-                    var myEl = angular.element(document.querySelector('#row-' + $scope.deleteMenuId));
-                    myEl.empty();  //clears contents
-
-                    $('.modal-footer .btn-default').click();
-                }
-            });
-        };
-
-        $scope.deleteConfirm = function (branchId) {
-            $scope.deleteMenuId = branchId;
-        };
-        
-        $scope.showImage = function (imageId){
-            
-            var url = erpSystem.baseUrl + 'Images/getImageById/' + imageId;
-        $http.get(url).success(function (data) {
-            $scope.currentImage = data;
-          
-        });
-            
-        };
-
-
-    }
-])
-
-.controller('add-offer-benefit', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
-
+.controller('OffersBenefit', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
     function ($scope, $routeParams, $http, erpSystem, $location) {
 
         $scope.updateData = false;
