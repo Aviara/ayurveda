@@ -62,7 +62,7 @@ class Hotel_model extends CI_Model {
         $intId = (true == isset($arrPostData['id']) && true == valStr($arrPostData['id'])) ? $arrPostData['id'] : NULL;
         
         if (false == valStr($intId)) {
-            $this->session->flashdata(array('message' => 'Student Id not an numbric value.'));
+            $this->session->flashdata(array('message' => 'Hotel Id not an numbric value.'));
             return false;
         }
         

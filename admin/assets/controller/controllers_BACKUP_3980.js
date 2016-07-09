@@ -1511,9 +1511,9 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
     }
 ])
 <<<<<<< HEAD
-
+.controller('OffersBenefit', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
 =======
->>>>>>> c8282aa180aef56dcb8a5cb4a798ee2f668edf2f
+<<<<<<< HEAD
 .controller('Images', ['$scope', '$routeParams', '$http', 'erpSystem','$upload','$timeout',
     function ($scope, $routeParams, $http, erpSystem, $upload, $timeout) {
         
@@ -1571,19 +1571,15 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
             
         };
 
+    
 
     }
 ])
-<<<<<<< HEAD
-//.controller('add-offer', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
-
-.controller('add-offer-benefit', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
-//>>>>>>> 6e1df09148d742fed3ab11177ff07498be5a4746
+.controller('add-offer', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
 =======
-
 .controller('add-offer-benefit', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
-
->>>>>>> c8282aa180aef56dcb8a5cb4a798ee2f668edf2f
+>>>>>>> 6e1df09148d742fed3ab11177ff07498be5a4746
+>>>>>>> fd56b341ff5b96580b0715706be170eed7a5c914
     function ($scope, $routeParams, $http, erpSystem, $location) {
 
         $scope.updateData = false;
