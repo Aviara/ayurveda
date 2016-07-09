@@ -36,7 +36,7 @@
                                                                        <li><a href="#/add-resorts"><span class="title"> Add Resorts </span><span class="label label-success pull-right ">Add</span></a></li>
                                                                         <li><a href="#/view-resorts"><span class="title"> View Resorts </span><span class="label label-success pull-right ">view</span></a></li>
                                                                         <li><a href="#/insert-resort-images"><span class="title"> Add images for resort </span><span class="label label-success pull-right ">Add</span></a></li>
-
+<li><a href="#/view-resort-images"><span class="title"> Add images for resort </span><span class="label label-success pull-right ">View Images</span></a></li>
                                                                       </ul>
                                                               </li>
                     

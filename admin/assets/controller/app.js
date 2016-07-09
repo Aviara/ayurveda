@@ -300,8 +300,8 @@ laundryApp.config(['$routeProvider',
                     templateUrl: baseUrlLink + 'partials/resorts/insert-resort-images.html',
                     controller: 'Images'
                 }).
-                    when('/view-gallery-images', {
-                    templateUrl: baseUrlLink + 'partials/images/view-gallery-images.html',
+                    when('/view-resort-images', {
+                    templateUrl: baseUrlLink + 'partials/images/view-resort-images.html',
                     controller: 'Images'
                 }).
                      when('/add-room-offer', {
@@ -319,12 +319,8 @@ laundryApp.config(['$routeProvider',
                      when('/add-policies',{
                     templateUrl: baseUrlLink + 'partials/policies/add-policies.html',
                     controller: 'add-policies'
-<<<<<<< HEAD
                 }).     
-                    
-=======
-                }).
-                     when('/view-policies',{
+                      when('/view-policies',{
                     templateUrl: baseUrlLink + 'partials/policies/view-policies.html',
                     controller: 'add-policies'
                 }). 
@@ -332,7 +328,6 @@ laundryApp.config(['$routeProvider',
                     templateUrl: baseUrlLink + 'partials/policies/add-policies.html',
                     controller: 'add-policies'
                 }).
->>>>>>> 6e1df09148d742fed3ab11177ff07498be5a4746
                 otherwise({
                     redirectTo: '/dashbord'
 
