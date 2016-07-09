@@ -44,17 +44,14 @@
                         <div class="form-group col-md-4">
                             <label class="col-md-4 control-label" for="roomTypeId">Room type</label>
                             <div class="col-md-8">
-                              <select id="form-field-select-1" class="form-control" ng-model="hrm.roomTypeId" name="roomTypeId">
+                              <select id="form-field-select-1" class="form-control" ng-model="sro.room_type_id" name="room_type_id">
                                     <option value="">Select Room Type</option>
-                                    <option value="Single Bed">Single Bed</option>
-                                    <option value="Double bed">Double bed</option> 
-                                    <option value="Family Room">Family Room</option> 
-                                    <option value="Luxury Room">Luxury Room</option>
+                                    <option ng-repeat="roomType in roomTypeList track by $index" value="{{roomType.id}}">  {{roomType.room_type}} </option>
                                 </select>
                              <div id="errorMiddleName"></div>
                             </div>
                         </div>
-								<div class="form-group col-md-4" ng-class="{ 'has-error': employeeSave.age.$touched && employeeSave.age.$invalid }">
+			<div class="form-group col-md-4" ng-class="{ 'has-error': employeeSave.age.$touched && employeeSave.age.$invalid }">
                             <label class="col-md-4 control-label" for="size">Size</label>
                             <div class="col-md-8">
                                 <input type="text" placeholder="size" id="age" class="form-control" name="size" ng-model="hrm.size" ng-value="{{employeeDetails.age}}" ng-bind="{{employeeDetails.age}}" required>

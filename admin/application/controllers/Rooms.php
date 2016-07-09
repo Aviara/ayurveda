@@ -23,17 +23,17 @@ class Rooms extends CI_Controller {
         exit;
     }
     
-//    public function getEmployeeType($intEmployeeTypeId) {
-//        $query = $this->db->get_where('employee_types', array('id' => $intEmployeeTypeId));
-//        
-//        $arrEmployee = array();
-//        foreach ($query->result() as $row) {
-//            $arrEmployee = $row;
-//        }
-//        
-//        echo json_encode($arrEmployee);
-//        exit;
-//    }
+    public function getAllRoomTypesByResortId() {
+        $query = $this->db->get('tbl_room_type');
+
+        $arrData = array();
+        foreach ($query->result() as $row) {
+            $arrData[] = $row;
+        }
+        
+        echo json_encode(array('roomTypeList' => $arrData));
+        exit;
+    }
 
     public function getStudddList() {
         $objUser = $this->session->userdata('user');
@@ -80,24 +80,24 @@ class Rooms extends CI_Controller {
         exit;
     }
     
-    public function saveEmployeeType() {
-        $this->load->model('stud_model');
-        $intInsert = $this->employeetype_model->insert_into_db();
+    public function saveRoomType() {
+        $this->load->model('Hotel_model');
+        $intInsert = $this->Hotel_model->insert_into_db();
 
         echo json_encode(array('success' => $intInsert));
         exit;
     }
 
     public function editroom() {
-          $this->load->model('hotel_model');
-        $intInsert = $this->hotel_model->updateRoom();
+          $this->load->model('Hotel_model');
+        $intInsert = $this->Hotel_model->updateRoom();
 
         echo json_encode(array('success' => $intInsert));
         exit;
     }
-     public function editEmployeeType() {
-          $this->load->model('stud_model');
-        $intInsert = $this->employeetype_model->updateEmployeeType();
+     public function editRoomType() {
+          $this->load->model('Hotel_model');
+        $intInsert = $this->Hotel_model->updateRoom();
 
         echo json_encode(array('success' => $intInsert));
         exit;
