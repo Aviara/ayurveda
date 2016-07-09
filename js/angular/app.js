@@ -53,9 +53,9 @@ resortApp.config(['$routeProvider',
                     controller: 'Home',
                     controllerAs: 'ctrl'
                 }).      
-                 when('/property-details', {
-                    templateUrl: baseUrlLink + 'partials/property-details.html',
-                    controller: 'PropertyDetails'
+                 when('/hotel-list', {
+                    templateUrl: baseUrlLink + 'partials/hotel-list.html',
+                    controller: 'HotelList'
                 }).        
                 when('/property-details/searchSite/:siteId', {
                     templateUrl: baseUrlLink + 'partials/property-details.html',

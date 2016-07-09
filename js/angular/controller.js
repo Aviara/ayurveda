@@ -138,7 +138,7 @@ resortCtrl.directive('imageonload', function() {
 //});
 
 
-resortCtrl.controller('PropertyDetails', function($cookies,$window,$scope,$http,erpSystem,$routeParams,$location,$route,$anchorScroll) {
+resortCtrl.controller('HotelList', function($cookies,$window,$scope,$http,erpSystem,$routeParams,$location,$route,$anchorScroll) {
    
        $('html').animate({ scrollTop: 0 }, 'slow'); 
 
