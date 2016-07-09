@@ -22,18 +22,29 @@ class Rooms extends CI_Controller {
         echo json_encode($arrRoom);
         exit;
     }
-    
     public function getAllRoomTypesByResortId() {
-        $query = $this->db->get_where('tbl_room_type');
+        $query = $this->db->get('tbl_room_type');
 
         $arrData = array();
         foreach ($query->result() as $row) {
-           $arrData[$row->id] = $row;
-        }
-        
-        echo json_encode(array('roomTypeList' => $arrData));
+            $arrData[$row->id] = $row;
+         }    
+           echo json_encode(array('roomTypeList' => $arrData));
         exit;
-    }
+    
+        }
+    
+//    public function getAllRoomTypesByResortId() {
+//        $query = $this->db->get_where('tbl_room_type');
+//
+//        $arrData = array();
+//        foreach ($query->result() as $row) {
+//           $arrData[$row->id] = $row;
+//        }
+//        
+//        echo json_encode(array('roomTypeList' => $arrData));
+//        exit;
+//    }
 
     public function getStudddList() {
         $objUser = $this->session->userdata('user');
@@ -73,8 +84,8 @@ class Rooms extends CI_Controller {
     }
 
     public function saveRoom() {
-        $this->load->model('hotel_model');
-            $intInsert = $this->hotel_model->insert_into_db();
+        $this->load->model('Hotel_model');
+            $intInsert = $this->Hotel_model->insert_into_db();
 
         echo json_encode(array('success' => $intInsert));
         exit;
