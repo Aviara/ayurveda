@@ -24,11 +24,11 @@ class Rooms extends CI_Controller {
     }
     
     public function getAllRoomTypesByResortId() {
-        $query = $this->db->get('tbl_room_type');
+        $query = $this->db->get_where('tbl_room_type');
 
         $arrData = array();
         foreach ($query->result() as $row) {
-            $arrData[] = $row;
+           $arrData[$row->id] = $row;
         }
         
         echo json_encode(array('roomTypeList' => $arrData));
