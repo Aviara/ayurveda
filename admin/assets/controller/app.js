@@ -310,15 +310,15 @@ laundryApp.config(['$routeProvider',
                 }).
                      when('/add-room-offer', {
                     templateUrl: baseUrlLink + 'partials/hotel_rooms/add-room-offer.html',
-                    controller: 'add-offer-benefit'
+                    controller: 'OffersBenefit'
                 }).
                      when('/add-room-offer/edit/:RoomOfferId', {
                     templateUrl: baseUrlLink + 'partials/hotel_rooms/add-room-offer.html',
-                    controller: 'add-offer-benefit'
+                    controller: 'OffersBenefit'
                 }).
                      when('/view-room-offer',{
                     templateUrl: baseUrlLink + 'partials/hotel_rooms/view-room-offer.html',
-                    controller: 'add-offer-benefit'
+                    controller: 'OffersBenefit'
                 }).
                      when('/add-policies',{
                     templateUrl: baseUrlLink + 'partials/policies/add-policies.html',

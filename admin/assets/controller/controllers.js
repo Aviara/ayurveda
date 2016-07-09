@@ -1249,7 +1249,7 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
             $http.get(url).success(function (data) {
                 $scope.RoomList = data;
             });
-            var url = erpSystem.baseUrl + 'Rooms/getAllRoomType';
+            var url = erpSystem.baseUrl + 'Rooms/getAllRoomTypesByResortId';
             $http.get(url).success(function (data) {
                 $scope.roomTypeList = data.roomTypeList;
             });
@@ -1510,7 +1510,7 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
         }
     }
 ])
-.controller('add-offer-benefit', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
+.controller('OffersBenefit', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
     function ($scope, $routeParams, $http, erpSystem, $location) {
 
         $scope.updateData = false;
