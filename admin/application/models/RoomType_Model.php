@@ -22,6 +22,7 @@
 
             return ($this->db->affected_rows() != 1) ? false : true;
         }
+        
     function updateRoomType() {
         
         $arrPostData = (true == isset($_POST['params'])) ? $_POST['params'] : array();
@@ -49,9 +50,9 @@
             $data = array(
                 'name' => $strName,
                 'description' => $strDescription,
-                'created_by' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
+                'created_by' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : null,
                 'created_on' => date('Y-m-d h:i:s'),
-                'updated_by' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
+                'updated_by' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : null,
                 'updated_on' => date('Y-m-d h:i:s')
             );
         
@@ -63,21 +64,10 @@
         function delete($intEmployeeTypeId) {
             return $this->db->delete('employee_types', array('id' => $intEmployeeTypeId));
         }
+        
+        
    function getEmployeeTypeDetails() {
-       /* $this->db->select('p.*, CONCAT(cl.first_name, \' \', cl.last_name) as client_name, CONCAT(e.first_name, \' \', e.last_name) as employee_name');
-        $this->db->from('payments p');
-        $this->db->join('challanes c', 'c.id = p.challan_id');
-        $this->db->join('clients cl', 'cl.id = p.client_id');
-        $this->db->join('employees e', 'e.id = p.employee_id');
-        $query = $this->db->get();
-*/   
-//        $query = $this->db->get_where('employee_types', array('id' => $id));
-//        $arrData = array();
-//        foreach ($query->result() as $row) {
-//            $arrData[$row->id] = $row;
-//        }
-//
-//        return $arrData;
+  
         $query = $this->db->get('employee_types');
         $arrData = array();
         foreach ($query->result() as $row) {

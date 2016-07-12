@@ -19,7 +19,7 @@ var laundryApp = angular.module('laundryErp', [
 laundryApp.factory('erpSystem', function () {
     return {
         //base_url: 'http://laundryerp.lcl/',
-        //baseUrl: 'http://laundryerp.lcl/',
+        //baseUrl: 'http://laundryerp.lcl/',ad
         
         base_url: 'http://localhost/ayurveda/admin/index.php/',
         baseUrl: 'http://localhost/ayurveda/admin/index.php/'
@@ -95,7 +95,7 @@ laundryApp.config(['$routeProvider',
                     templateUrl: baseUrlLink + 'partials/branches/view-branches.html',
                     controller: 'Branches'
                 }).
-                when('/new-employee', {
+                when('/add-employee', {
                     templateUrl: baseUrlLink + 'partials/employees/add-employee.html',
                     controller: 'Employees'
                 }).
@@ -107,11 +107,11 @@ laundryApp.config(['$routeProvider',
                     templateUrl: baseUrlLink + 'partials/employees/view-employees.html',
                     controller: 'Employees'
                 }).
-                when('/new-employee-type', {
+                when('/add-employee-type', {
                     templateUrl: baseUrlLink + 'partials/employees/add-employee-type.html',
                     controller: 'EmployeeTypes'
                 }).
-                when('/new-employee-type/edit/:employeeTypeId', {
+                when('/add-employee-type/edit/:employeeTypeId', {
                     templateUrl: baseUrlLink + 'partials/employees/add-employee-type.html',
                     controller: 'EmployeeTypes'
                 }).
@@ -119,6 +119,7 @@ laundryApp.config(['$routeProvider',
                     templateUrl: baseUrlLink + 'partials/employees/view-employee-types.html',
                     controller: 'EmployeeTypes'
                 }).
+
                 when('/new-client', {
                     templateUrl: baseUrlLink + 'partials/clients/add-client.html',
                     controller: 'Clients'
@@ -313,7 +314,7 @@ laundryApp.config(['$routeProvider',
                     controller: 'Images'
                 }).
                     when('/view-resort-images', {
-                    templateUrl: baseUrlLink + 'partials/images/view-resort-images.html',
+                    templateUrl: baseUrlLink + 'partials/resorts/view-resort-images.html',
                     controller: 'Images'
                 }).
                      when('/add-room-offer', {
@@ -330,16 +331,42 @@ laundryApp.config(['$routeProvider',
                 }).
                      when('/add-policies',{
                     templateUrl: baseUrlLink + 'partials/policies/add-policies.html',
-                    controller: 'Resort-Policies'
+                    controller: 'ResortPolicies'
                 }).     
                       when('/view-policies',{
                     templateUrl: baseUrlLink + 'partials/policies/view-policies.html',
-                    controller: 'Resort-Policies'
+                    controller: 'ResortPolicies'
                 }). 
                      when('/add-policies/edit/:ResortPoliciesId',{
                     templateUrl: baseUrlLink + 'partials/policies/add-policies.html',
-                    controller: 'Resort-Policies'
+                    controller: 'ResortPolicies'
                 }).
+
+		 when('/add-resort-useful-info', {
+                    templateUrl: baseUrlLink + 'partials/resorts/add-resort-useful-info.html',
+                    controller: 'ResortUsefulInfo'
+                }).
+                   when('/view-resort-useful-info', {
+                    templateUrl: baseUrlLink + 'partials/resorts/view-resort-useful-info.html',
+                    controller: 'ResortUsefulInfo'
+                }).
+                   when('/add-resort-useful-info/edit/:employeeId', {
+                    templateUrl: baseUrlLink + 'partials/resorts/add-resort-useful-info.html',
+                    controller: 'ResortUsefulInfo'
+                }).
+
+		 when('/add-room-type', {
+                    templateUrl: baseUrlLink + 'partials/room/add-room-type.html',
+                    controller: 'RoomTypes'
+                }).
+                   when('/view-room-type', {
+                    templateUrl: baseUrlLink + 'partials/room/view-room-type.html',
+                    controller: 'RoomTypes'
+                }).
+                   when('/add-room-type/edit/:employeeId', {
+                    templateUrl: baseUrlLink + 'partials/room/add-room-type.html',
+                    controller: 'RoomTypes'
+                  }).       
                 otherwise({
                     redirectTo: '/dashbord'
 

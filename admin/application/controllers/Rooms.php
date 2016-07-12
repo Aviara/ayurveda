@@ -79,7 +79,7 @@ class Rooms extends CI_Controller {
             $arrData[$row->id] = $row;
         }
         
-        echo json_encode( $arrData);
+        echo json_encode($arrData);
         exit;
     }
 
@@ -115,8 +115,8 @@ class Rooms extends CI_Controller {
     }
 
     public function deleteRoom($deleteStudent) {
-        $this->load->model('tbl_model');
-        $boolDeleted = $this->hotel_model->delete($deleteStudent);
+        $this->load->model('Hotel_model');
+        $boolDeleted = $this->Hotel_model->delete($deleteStudent);
         
         echo json_encode(array('success' => $boolDeleted));
         exit;

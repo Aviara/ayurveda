@@ -35,32 +35,9 @@ class ResortPolicies extends CI_Controller {
 //        exit;
 //    }
 
-    public function getStudddList() {
-        $objUser = $this->session->userdata('user');
-//        $intCityId = $objUser->city_id;
-//        $intBranchId = $objUser->branch_id;
-        
-        $this->db->select('e.*, et.id as employee_type_id');
-        $this->db->from('employees e');
-        $this->db->join('employee_types et', 'e.employee_type_id = et.id', 'left');
-         if (1 == $objUser->employee_type_id) {
-            
-        } else {
-            $this->db->where('e.city_id', $intCityId);
-            $this->db->where('e.branch_id', $intBranchId);
-        }
-        $query = $this->db->get();
-
-        $arrData = array();
-        foreach ($query->result() as $row) {
-            $arrData[$row->id] = $row;
-        }
-        
-        echo json_encode(array('RoomList' => $arrData));
-        exit;
-    }
+   
     
-    public function getAllPoliciesByResottId() {
+    public function getAllPoliciesByResottId() {   //***** Where is the id ?? *******//
         $query = $this->db->get('tbl_policies');
 
         $arrData = array();
@@ -80,13 +57,13 @@ class ResortPolicies extends CI_Controller {
         exit;
     }
     
-    public function saveEmployeeType() {
-        $this->load->model('ResortPolicies_Model');
-        $intInsert = $this->employeetype_model->insert_into_db();
-
-        echo json_encode(array('success' => $intInsert));
-        exit;
-    }
+//    public function saveEmployeeType() {
+//        $this->load->model('ResortPolicies_Model');
+//        $intInsert = $this->employeetype_model->insert_into_db();
+//
+//        echo json_encode(array('success' => $intInsert));
+//        exit;
+//    }
 
     public function editResortPolicies() {
           $this->load->model('ResortPolicies_Model');
@@ -95,13 +72,14 @@ class ResortPolicies extends CI_Controller {
         echo json_encode(array('success' => $intInsert));
         exit;
     }
-     public function editEmployeeType() {
-          $this->load->model('stud_model');
-        $intInsert = $this->employeetype_model->updateEmployeeType();
-
-        echo json_encode(array('success' => $intInsert));
-        exit;
-    }
+    
+//     public function editEmployeeType() {
+//          $this->load->model('stud_model');
+//        $intInsert = $this->employeetype_model->updateEmployeeType();
+//
+//        echo json_encode(array('success' => $intInsert));
+//        exit;
+//    }
 
     public function deleteResortPolicies($deleteRoomPolicies) {
         $this->load->model('ResortPolicies_Model');
@@ -119,17 +97,7 @@ class ResortPolicies extends CI_Controller {
 //        exit;
 //    }
     
-    public function getManagers() {
-        $query = $this->db->get_where('employees', array('employee_type_id' => 1));
-        
-        $arrEmployeeManagers = array();
-        foreach ($query->result() as $row) {
-            $arrEmployeeManagers[$row->id] = $row;
-        }
-        
-        echo json_encode($arrEmployeeManagers);
-        exit;
-    }
+    
 public function downloadStudentDetails() {
 
         //$this->load->library('phpexcel');

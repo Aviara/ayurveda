@@ -251,121 +251,9 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
         }
 
     }
-]).controller('Branches', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
-    function ($scope, $routeParams, $http, erpSystem, $location) {
-
-
-        if ($routeParams.branchId) {
-            $scope.updateData = true;
-            $scope.branchId = $routeParams.branchId;
-            var url = erpSystem.baseUrl + 'branch/getBranch/' + $scope.branchId;
-            $http.get(url).success(function (data) {
-                $scope.branch = data;
-            });
-        } else {
-            $scope.updateData = false;
-        }
-
-        $scope.isUpdate = function () {
-            return $scope.update;
-        }
-
-        var url = erpSystem.baseUrl + 'branch/getManagers';
-        $http.get(url).success(function (data) {
-            $scope.managerList = data;
-        });
-         var url = erpSystem.baseUrl + 'branch/getAllCities';
-        $http.get(url).success(function (data) {
-            $scope.citiesList = data;
-        });
-
-        $scope.updateBranchData = function () {
-            var postData = $.param({
-                params: $scope.branch
-            });
-
-            var config = {
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-                }
-            };
-
-            var boolIsInsert = false;
-
-            var url = erpSystem.baseUrl + 'branch/editBranch';
-            $http.post(url, postData, config).success(function (data, status, headers, config) {
-                boolIsInsert = data.success;
-
-                if (true == boolIsInsert || 1 == boolIsInsert) {
-
-                    $location.url('view-branches?insert=true');
-                }
-            }).error(function (data, status, headers, config) {
-            });
-        }
-        var url = erpSystem.baseUrl + 'branch/getBranchList';
-        $http.get(url).success(function (data) {
-            $scope.branchList = data.branchList;
-        });
-
-        $scope.saveBranchData = function (branch) {
-
-            var url = erpSystem.baseUrl + 'branch/saveBranch';
-
-            if (branch.hasOwnProperty('id')) {
-                url = erpSystem.baseUrl + 'branch/editBranch';
-            }
-
-            var postData = $.param({
-                params: branch
-            });
-
-            var config = {
-                headers: {
-                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
-                }
-            };
-
-            var boolIsInsert = false;
-
-            //var url = erpSystem.baseUrl + 'branch/saveBranch';
-            $http.post(url, postData, config).success(function (data, status, headers, config) {
-                boolIsInsert = data.success;
-
-                if (true == boolIsInsert || 1 == boolIsInsert) {
-                    $scope.message = "Operation Successful !!!";
-                    if (branch.hasOwnProperty('id')) {
-                        $location.url('view-branches?update=true&id=' + branch.id);
-                    } else {
-                        $scope.message = "Operation Successful !!!";
-                        $location.url('view-branches?insert=true');
-                    }
-                }
-            }).error(function (data, status, headers, config) {
-            });
-
-        }
-
-        $scope.deleteBranches = function () {
-            console.log($scope.deleteMenuId);
-
-            var url = erpSystem.baseUrl + 'branch/deleteBranch/' + $scope.deleteMenuId
-            $http.delete(url).success(function (data) {
-                if (1 == data.success || 1 === data.success) {
-                    var myEl = angular.element(document.querySelector('#row-' + $scope.deleteMenuId));
-                    myEl.empty();  //clears contents
-
-                    $('.modal-footer .btn-default').click();
-                }
-            });
-        }
-
-        $scope.deleteConfirm = function (branchId) {
-            $scope.deleteMenuId = branchId;
-        }
-    }
-]).controller('Employees', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
-    function ($scope, $routeParams, $http, erpSystem, $location) {
+])
+.controller('Employees', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
+    function ($scope, $routeParams, $http, erpSystem, $location ) {
 
         $scope.updateData = false;
 
@@ -381,6 +269,9 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
             $http.get(url).success(function (data) {
                 $scope.update = true;
                 $scope.employee = data;
+                
+//               $scope.password =  md5.createHash($scope.data.password || '');
+//               $scope.employee.push($scope.password);
             });
         } else {
             var url = erpSystem.baseUrl + 'employee/getEmployeeList';
@@ -496,19 +387,19 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
 
         //$scope.update = false;
 
-        if ($routeParams.employeeTypeId) {
-            $scope.employeeTypeId = $routeParams.employeeTypeId;
-            var url = erpSystem.baseUrl + 'employee/getEmployeeType/' + $scope.employeeTypeId;
-            $http.get(url).success(function (data) {
-                $scope.update = true;
-                $scope.employeeTypeDetails = data;
-            });
-        } else {
-            var url = erpSystem.baseUrl + 'employee/getEmployeeTypeList';
-            $http.get(url).success(function (data) {
-                $scope.employeeTypeList = data.employeeTypeList;
-            });
-        }
+//        if ($routeParams.employeeTypeId) {
+//            $scope.employeeTypeId = $routeParams.employeeTypeId;
+//            var url = erpSystem.baseUrl + 'employee/getEmployeeType/' + $scope.employeeTypeId;
+//            $http.get(url).success(function (data) {
+//                $scope.update = true;
+//                $scope.employeeTypeDetails = data;
+//            });
+//        } else {
+//            var url = erpSystem.baseUrl + 'employee/getEmployeeTypeList';
+//            $http.get(url).success(function (data) {
+//                $scope.employeeTypeList = data.employeeTypeList;
+//            });
+//        }
 
         $scope.editMenu = function () {
 //            $routeParams
@@ -530,6 +421,120 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
 
         $scope.deleteConfirm = function (employeeTypeId) {
             $scope.deleteEmployeeTypeId = employeeTypeId;
+        }
+    }
+])        
+.controller('Branches', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
+    function ($scope, $routeParams, $http, erpSystem, $location) {
+
+
+        if ($routeParams.branchId) {
+            $scope.updateData = true;
+            $scope.branchId = $routeParams.branchId;
+            var url = erpSystem.baseUrl + 'branch/getBranch/' + $scope.branchId;
+            $http.get(url).success(function (data) {
+                $scope.branch = data;
+            });
+        } else {
+            $scope.updateData = false;
+        }
+
+        $scope.isUpdate = function () {
+            return $scope.update;
+        }
+
+        var url = erpSystem.baseUrl + 'branch/getManagers';
+        $http.get(url).success(function (data) {
+            $scope.managerList = data;
+        });
+         var url = erpSystem.baseUrl + 'branch/getAllCities';
+        $http.get(url).success(function (data) {
+            $scope.citiesList = data;
+        });
+
+        $scope.updateBranchData = function () {
+            var postData = $.param({
+                params: $scope.branch
+            });
+
+            var config = {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                }
+            };
+
+            var boolIsInsert = false;
+
+            var url = erpSystem.baseUrl + 'branch/editBranch';
+            $http.post(url, postData, config).success(function (data, status, headers, config) {
+                boolIsInsert = data.success;
+
+                if (true == boolIsInsert || 1 == boolIsInsert) {
+
+                    $location.url('view-branches?insert=true');
+                }
+            }).error(function (data, status, headers, config) {
+            });
+        }
+        var url = erpSystem.baseUrl + 'branch/getBranchList';
+        $http.get(url).success(function (data) {
+            $scope.branchList = data.branchList;
+        });
+
+        $scope.saveBranchData = function (branch) {
+
+            var url = erpSystem.baseUrl + 'branch/saveBranch';
+
+            if (branch.hasOwnProperty('id')) {
+                url = erpSystem.baseUrl + 'branch/editBranch';
+            }
+
+            var postData = $.param({
+                params: branch
+            });
+
+            var config = {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                }
+            };
+
+            var boolIsInsert = false;
+
+            //var url = erpSystem.baseUrl + 'branch/saveBranch';
+            $http.post(url, postData, config).success(function (data, status, headers, config) {
+                boolIsInsert = data.success;
+
+                if (true == boolIsInsert || 1 == boolIsInsert) {
+                    $scope.message = "Operation Successful !!!";
+                    if (branch.hasOwnProperty('id')) {
+                        $location.url('view-branches?update=true&id=' + branch.id);
+                    } else {
+                        $scope.message = "Operation Successful !!!";
+                        $location.url('view-branches?insert=true');
+                    }
+                }
+            }).error(function (data, status, headers, config) {
+            });
+
+        }
+
+        $scope.deleteBranches = function () {
+            console.log($scope.deleteMenuId);
+
+            var url = erpSystem.baseUrl + 'branch/deleteBranch/' + $scope.deleteMenuId
+            $http.delete(url).success(function (data) {
+                if (1 == data.success || 1 === data.success) {
+                    var myEl = angular.element(document.querySelector('#row-' + $scope.deleteMenuId));
+                    myEl.empty();  //clears contents
+
+                    $('.modal-footer .btn-default').click();
+                }
+            });
+        }
+
+        $scope.deleteConfirm = function (branchId) {
+            $scope.deleteMenuId = branchId;
         }
     }
 ]).controller('Packages', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
@@ -1257,7 +1262,7 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
 
         $scope.saveRoom = function (hrm) {
             
-           // alert('hi');
+//            alert(hrm.room_type_Id);
             var url = '';
             if (hrm.hasOwnProperty('id')) {
                 url = erpSystem.baseUrl + 'Rooms/editroom';
@@ -1509,7 +1514,8 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
             $scope.deleteResortsId = ResortsId;
         }
     }
-]).controller('Images', ['$scope', '$routeParams', '$http', 'erpSystem','$upload','$timeout',
+])
+.controller('Images', ['$scope', '$routeParams', '$http', 'erpSystem','$upload','$timeout',
     function ($scope, $routeParams, $http, erpSystem, $upload, $timeout) {
         
    $scope.uploadResult = [];
@@ -1568,7 +1574,8 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
 
 
     }
-]).controller('add-offer-benefit', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
+])
+.controller('OffersBenefit', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
       function ($scope, $routeParams, $http, erpSystem, $location) {
 
         $scope.updateData = false;
@@ -1646,7 +1653,7 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
         }
     }
 ])
-.controller('Resort-Policies', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
+.controller('ResortPolicies', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
     function ($scope, $routeParams, $http, erpSystem, $location) {
 
         $scope.updateData = false;
@@ -1723,4 +1730,163 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
             $scope.deleteResortPoliciesId = ResortPoliciesId;
         }
     }
+])
+.controller('RoomTypes', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
+       function ($scope, $routeParams, $http, erpSystem, $location) {
+
+        $scope.updateData = false;
+        
+        var url = erpSystem.baseUrl + 'ResortUsefulInfo/getAllResorts';
+        $http.get(url).success(function (data) {
+            $scope.getAllResorts = data.ResortList;
+         });           
+       
+       if ($routeParams.employeeId) {
+           $scope.employeeId = $routeParams.employeeId;
+            var url = erpSystem.baseUrl + 'RoomType/getRoomByRoomId/' + $scope.employeeId;
+            $http.get(url).success(function (data) {
+                $scope.updateData = true;
+               $scope.room = data;
+           });
+        } else {
+           var url = erpSystem.baseUrl + 'RoomType/roomList';
+            $http.get(url).success(function (data) {
+               $scope.roomlistv = data;
+            });
+        }
+
+        $scope.saveRoomType = function (employee) {
+           // alert(employee.employee_type_id);
+            //in model ng-model name
+            var url = '';
+            if (employee.hasOwnProperty('id')) {
+                url = erpSystem.baseUrl + 'RoomType/editRoomtype'
+            } else {
+                $scope.message = "Operation Successful !!!";
+                url = erpSystem.baseUrl + 'RoomType/saveRoomType'
+            }
+
+            var postData = $.param({
+                paramsrt: employee
+            });
+
+            var config = {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                }
+            };
+
+            var boolIsInsert = false;
+
+            $http.post(url, postData, config).success(function (data, status, headers, config) {
+                boolIsInsert = data.success;
+
+                if (employee.hasOwnProperty('id') && 1 == boolIsInsert) {
+                    $location.url('view-room-type?update=true&id=' + employee.id);
+                } else {
+                    $location.url('view-room-type?insert=true');
+                }
+            }).error(function (data, status, headers, config) {
+            });
+
+        }
+        $scope.deleteRoom = function (){
+//            console.log($scope.deleteEmployeeId);
+
+            var url = erpSystem.baseUrl + 'RoomType/deleteRoom/' + $scope.deleteRoomId
+            $http.delete(url).success(function (data) {
+                if (1 == data.success || 1 === data.success) {
+                    var myEl = angular.element(document.querySelector('#row-' + $scope.deleteRoomId));
+                    myEl.empty();  //clears contents
+                    $('.modal-footer .btn-default').click();
+                }
+            });
+        }
+
+        $scope.deleteConfirm = function (roomId) {
+//            alert('function is called');
+            $scope.deleteRoomId = roomId;
+        }
+    }
+
+])
+ .controller('ResortUsefulInfo', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
+    function ($scope, $routeParams, $http, erpSystem, $location) {
+
+        $scope.updateData = false;
+
+      var url = erpSystem.baseUrl + 'ResortUsefulInfo/getAllResorts';
+        $http.get(url).success(function (data) {
+            $scope.getAllResorts = data.ResortList;
+         });           
+       
+
+        if ($routeParams.employeeId) {
+           $scope.employeeId = $routeParams.employeeId;
+            var url = erpSystem.baseUrl + 'ResortUsefulInfo/getResortUsefulInfo/' + $scope.employeeId;
+            $http.get(url).success(function (data) {
+                $scope.updateData = true;
+               $scope.resort = data;
+           });
+        } else {
+           var url = erpSystem.baseUrl + 'ResortUsefulInfo/Resortinfolist';
+            $http.get(url).success(function (data) {
+               $scope.resortinfolist1 = data;
+            });
+        }
+
+        $scope.saveResortinfo = function (employee) {
+           // alert(employee.employee_type_id);
+            //in model ng-model name
+            var url = '';
+            if (employee.hasOwnProperty('id')) {
+                url = erpSystem.baseUrl + 'ResortUsefulInfo/editResortInfo'
+            } else {
+                $scope.message = "Operation Successful !!!";
+                url = erpSystem.baseUrl + 'ResortUsefulInfo/saveResortInfo'
+            }
+
+            var postData = $.param({
+                paramsr: employee
+            });
+
+            var config = {
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded;charset=utf-8;'
+                }
+            };
+
+            var boolIsInsert = false;
+
+            $http.post(url, postData, config).success(function (data, status, headers, config) {
+                boolIsInsert = data.success;
+
+                if (employee.hasOwnProperty('id') && 1 == boolIsInsert) {
+                    $location.url('view-resort-useful-info?update=true&id=' + employee.id);
+                } else {
+                    $location.url('view-resort-useful-info?insert=true');
+                }
+            }).error(function (data, status, headers, config) {
+            });
+
+        }
+        $scope.deleteResortUsefulInfo1 = function (){
+//            console.log($scope.deleteEmployeeId);
+
+            var url = erpSystem.baseUrl + 'ResortUsefulInfo/deleteResortUsefulInfo/' + $scope.deleteResortUsefulInfo
+            $http.delete(url).success(function (data) {
+                if (1 == data.success || 1 === data.success) {
+                    var myEl = angular.element(document.querySelector('#row-' + $scope.deleteResortUsefulInfo));
+                    myEl.empty();  //clears contents
+                    $('.modal-footer .btn-default').click();
+                }
+            });
+        }
+
+        $scope.deleteConfirm = function (ResortInfoId) {
+//            alert('function is called');
+            $scope.deleteResortUsefulInfo = ResortInfoId;
+        }
+    }
+
 ]);

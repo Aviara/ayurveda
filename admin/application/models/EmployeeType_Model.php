@@ -18,7 +18,7 @@
                 'updated_on' => date('Y-m-d h:i:s')
             );
 
-            $this->db->insert('employee_types', $data);
+            $this->db->insert('tbl_employee_types', $data);
 
             return ($this->db->affected_rows() != 1) ? false : true;
         }
@@ -33,7 +33,7 @@
             return false;
         }
         
-        $query = $this->db->get_where('employee_types', array('id' => $intId));
+        $query = $this->db->get_where('tbl_employee_types', array('id' => $intId));
         $objEmployeeType = (true == valArr($query->result())) ? current($query->result()) : NULL;
         
         if (false == valObj($objEmployeeType, 'stdClass')) {
@@ -56,12 +56,12 @@
             );
         
         $this->db->where(array('id' => $intId));
-        $this->db->update('employee_types', $data);
+        $this->db->update('tbl_employee_types', $data);
         
         return ($this->db->affected_rows() != 1) ? false : true;
     }
         function delete($intEmployeeTypeId) {
-            return $this->db->delete('employee_types', array('id' => $intEmployeeTypeId));
+            return $this->db->delete('tbl_employee_types', array('id' => $intEmployeeTypeId));
         }
    function getEmployeeTypeDetails() {
        /* $this->db->select('p.*, CONCAT(cl.first_name, \' \', cl.last_name) as client_name, CONCAT(e.first_name, \' \', e.last_name) as employee_name');

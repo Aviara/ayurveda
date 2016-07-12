@@ -12,7 +12,7 @@ class Employee extends CI_Controller {
     }
 
     public function getEmployee($intEmployeeId) {
-        $query = $this->db->get_where('employees', array('id' => $intEmployeeId));
+        $query = $this->db->get_where('tbl_employees', array('id' => $intEmployeeId));
         
         $arrEmployee = array();
         foreach ($query->result() as $row) {
@@ -24,7 +24,7 @@ class Employee extends CI_Controller {
     }
     
     public function getEmployeeType($intEmployeeTypeId) {
-        $query = $this->db->get_where('employee_types', array('id' => $intEmployeeTypeId));
+        $query = $this->db->get_where('tbl_employee_types', array('id' => $intEmployeeTypeId));
         
         $arrEmployee = array();
         foreach ($query->result() as $row) {
@@ -36,19 +36,19 @@ class Employee extends CI_Controller {
     }
 
     public function getEmployeeList() {
-        $objUser = $this->session->userdata('user');
-        $intCityId = $objUser->city_id;
-        $intBranchId = $objUser->branch_id;
+//        $objUser = $this->session->userdata('user');
+//        $intCityId = $objUser->city_id;
+//        $intBranchId = $objUser->branch_id;
         
-        $this->db->select('e.*, et.id as employee_type_id');
-        $this->db->from('employees e');
-        $this->db->join('employee_types et', 'e.employee_type_id = et.id', 'left');
-         if (1 == $objUser->employee_type_id) {
-            
-        } else {
-            $this->db->where('e.city_id', $intCityId);
-            $this->db->where('e.branch_id', $intBranchId);
-        }
+        $this->db->select('e.*, et.id as employee_type_id, et.name as employee_type');
+        $this->db->from('tbl_employees e');
+        $this->db->join('tbl_employee_types et', 'e.employee_type_id = et.id', 'left');
+//         if (1 == $objUser->employee_type_id) {
+//            
+//        } else {
+//            $this->db->where('e.city_id', $intCityId);
+//            $this->db->where('e.branch_id', $intBranchId);
+//        }
         $query = $this->db->get();
 
         $arrData = array();
@@ -61,7 +61,7 @@ class Employee extends CI_Controller {
     }
     
     public function getEmployeeTypeList() {
-        $query = $this->db->get('employee_types');
+        $query = $this->db->get('tbl_employee_types');
 
         $arrData = array();
         foreach ($query->result() as $row) {
