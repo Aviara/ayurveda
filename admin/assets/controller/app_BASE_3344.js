@@ -1,11 +1,7 @@
     'use strict';
 
 /* App Module */
-<<<<<<< HEAD
-//kk test
-=======
-//kalpesh test
->>>>>>> 41dd717a2a77a245d4b4c3fda319d4251c2e0c29
+
 var laundryApp = angular.module('laundryErp', [
     'ngRoute',
     'datatables',
