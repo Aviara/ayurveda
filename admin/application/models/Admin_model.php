@@ -14,11 +14,11 @@ class Admin_model extends CI_Model {
         $strEmailAddress    = (true == isset($_POST['username']) && true == valStr($_POST['username'])) ? strtolower($_POST['username']) : NULL;
         $strPassword        = (true == isset($_POST['password']) && true == valStr($_POST['password'])) ? md5($_POST['password']) : NULL;
         
-        $query      = $this->db->get_where('tbl_employees', array('email_id' => $strEmailAddress, 'password' => $strPassword), 1);
+        $query      = $this->db->get_where('tbl_employees', array('emailId' => $strEmailAddress, 'password' => $strPassword), 1);
         $objResult  = (true == valArr($query->result())) ? current($query->result()) : NULL;
         
         if (true == valObj($objResult, 'stdClass') && true == valStr($objResult->id)) {
-            $this->session->set_userdata(array('id' => $objResult->id, 'email_id' => $objResult->email_id,'user' => $objResult));
+            $this->session->set_userdata(array('id' => $objResult->id, 'email_id' => $objResult->emailId, 'user' => $objResult));
             return true;
         } else {
             $array_items = array('id' => '', 'email_id' => '', 'user' => '');

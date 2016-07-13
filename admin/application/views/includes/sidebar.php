@@ -16,7 +16,12 @@
                 </div>
                 <div class="inline-block">
                     <h5 class="no-margin"> Welcome </h5>
-                    <h4 class="no-margin"> Peter Clark </h4>
+                    <h4 class="no-margin">  <?php 
+                                            $objUser = $this->session->userdata('user');
+                                            if (true == valObj($objUser, 'stdClass')) {
+                                                echo $objUser->firstName . ' ' . $objUser->lastName;
+                                            }
+                                        ?> </h4>
                     <a class="btn user-options sb_toggle">
                         <i class="fa fa-cog"></i>
                     </a>

@@ -212,7 +212,7 @@
                                         <?php 
                                             $objUser = $this->session->userdata('user');
                                             if (true == valObj($objUser, 'stdClass')) {
-                                                echo $objUser->first_name . ' ' . $objUser->last_name;
+                                                echo $objUser->firstName . ' ' . $objUser->lastName;
                                             }
                                         ?>
                                         </span> <i class="fa fa-caret-down "></i>

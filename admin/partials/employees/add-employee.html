@@ -87,11 +87,11 @@
                         </div>
 
                         <div class="form-group col-md-4" ng-class="{ 'has-error': employeeSave.employee_type_id.$touched && employeeSave.employee_type_id.$invalid }">
-                            <label class="col-md-4 control-label" for="url">Employee Type</label>
-                            <div class="col-md-8">
-                                <select id="form-field-select-1" class="form-control" ng-model="employee.employee_type_id" >
-                                    <option value="">Select Employee Type</option>
-                                    <option ng-repeat="employeeType in employeeTypeList track by $index" value="{{employeeType.id}}">  {{employeeType.name}} </option>
+                            <label class="col-md-4 control-label" for="url">Select Resort</label>
+                           <div class="col-sm-8">  
+                                <select id="form-field-select-1" class="form-control" ng-model="employee.resortId" name="id">
+                                    <option value="">Select Resort</option>
+                                    <option ng-repeat="getresortSave in getAllResorts track by $index" value="{{getresortSave.id}}">  {{getresortSave.name}} </option>
                                 </select>
                             </div>
                         </div>    

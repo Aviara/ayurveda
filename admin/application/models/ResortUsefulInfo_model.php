@@ -11,12 +11,14 @@ class ResortUsefulInfo_model extends CI_Model {
        // $arrPostData = $_POST['params'];
         
         
-                   $strresortId  = (true == isset($arrPostData['resortId']) && true == valStr($arrPostData['resortId'])) ? $arrPostData['resortId'] : NULL;
+            $strresortId  = (true == isset($arrPostData['resortId']) && true == valStr($arrPostData['resortId'])) ? $arrPostData['resortId'] : NULL;
             $strheading    = (true == isset($arrPostData['heading']) && true == valStr($arrPostData['heading'])) ? $arrPostData['heading'] : NULL;
-        $strDescription    = (true == isset($arrPostData['Description']) && true == valStr($arrPostData['Description'])) ? $arrPostData['Description'] : NULL;
+            $strDescription    = (true == isset($arrPostData['Description']) && true == valStr($arrPostData['Description'])) ? $arrPostData['Description'] : NULL;
         
         $data = array(
+            if()
                 'resortId' => $strresortId,
+            
                 'heading' => $strheading,
                 'Description' => $strDescription,
                 'Created_by' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,

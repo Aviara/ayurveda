@@ -10,26 +10,28 @@ class Employee_model extends CI_Model {
         
        // $arrPostData = $_POST['params'];
         
-        $strFirstName           = (true == isset($arrPostData['first_name']) && true == valStr($arrPostData['first_name'])) ? $arrPostData['first_name'] : NULL;
-        $strMiddleName          = (true == isset($arrPostData['middle_name']) && true == valStr($arrPostData['middle_name'])) ? $arrPostData['middle_name'] : NULL;
-        $strLastName            = (true == isset($arrPostData['last_name']) && true == valStr($arrPostData['last_name'])) ? $arrPostData['last_name'] : NULL;
-        $strEmployeeTypeId      = (true == isset($arrPostData['employee_type_id']) && true == valStr($arrPostData['employee_type_id'])) ? $arrPostData['employee_type_id'] : NULL;
-        $strAddressLine1        = (true == isset($arrPostData['address_line1']) && true == valStr($arrPostData['address_line1'])) ? $arrPostData['address_line1'] : NULL;
+        $strFirstName           = (true == isset($arrPostData['firstName']) && true == valStr($arrPostData['firstName'])) ? $arrPostData['firstName'] : NULL;
+        $strMiddleName          = (true == isset($arrPostData['middleName']) && true == valStr($arrPostData['middleName'])) ? $arrPostData['middleName'] : NULL;
+        $strLastName            = (true == isset($arrPostData['lastName']) && true == valStr($arrPostData['lastName'])) ? $arrPostData['lastName'] : NULL;
+        $strEmployeeTypeId      = (true == isset($arrPostData['employeeTypeId']) && true == valStr($arrPostData['employeeTypeId'])) ? $arrPostData['employeeTypeId'] : NULL;
+        $strresortId            = (true == isset($arrPostData['resortId']) && true == valStr($arrPostData['resortId'])) ? $arrPostData['resortId'] : NULL;
+        $strAddressLine1        = (true == isset($arrPostData['addressLine1']) && true == valStr($arrPostData['addressLine1'])) ? $arrPostData['addressLine1'] : NULL;
         $strAge                 = (true == isset($arrPostData['age']) && true == valStr($arrPostData['age'])) ? $arrPostData['age'] : NULL;
-        $strBirthDate           = (true == isset($arrPostData['birth_date']) && true == valStr($arrPostData['birth_date'])) ? $arrPostData['birth_date'] : NULL;
+        $strBirthDate           = (true == isset($arrPostData['birthDate']) && true == valStr($arrPostData['birthDate'])) ? $arrPostData['birthDate'] : NULL;
         $strGender              = (true == isset($arrPostData['gender']) && true == valStr($arrPostData['gender'])) ? $arrPostData['gender'] : NULL;
-        $strEmailId             = (true == isset($arrPostData['email_id']) && true == valStr($arrPostData['email_id'])) ? $arrPostData['email_id'] : NULL;
-        $strOfficeEmailId       = (true == isset($arrPostData['office_email_id']) && true == valStr($arrPostData['office_email_id'])) ? $arrPostData['office_email_id'] : NULL;
-        $strMobileNo            = (true == isset($arrPostData['mobile_no']) && true == valStr($arrPostData['mobile_no'])) ? $arrPostData['mobile_no'] : NULL;
+        $strEmailId             = (true == isset($arrPostData['emailId']) && true == valStr($arrPostData['emailId'])) ? $arrPostData['emailId'] : NULL;
+        $strOfficeEmailId       = (true == isset($arrPostData['officeEmailId']) && true == valStr($arrPostData['officeEmailId'])) ? $arrPostData['officeEmailId'] : NULL;
+        $strMobileNo            = (true == isset($arrPostData['mobileNo']) && true == valStr($arrPostData['mobileNo'])) ? $arrPostData['mobileNo'] : NULL;
         $strPassword            = (true == isset($arrPostData['password']) && true == valStr($arrPostData['password'])) ? md5($arrPostData['password']) : NULL;
-        $strOldPassword         = (true == isset($arrPostData['old_password']) && true == valStr($arrPostData['old_password'])) ? md5($arrPostData['old_password']) : NULL;
+        $strOldPassword         = (true == isset($arrPostData['oldPassword']) && true == valStr($arrPostData['oldPassword'])) ? md5($arrPostData['oldPassword']) : NULL;
       
        
-            $data = array(
+              $data = array(
                 'first_name' => $strFirstName,
                 'middle_name' => $strMiddleName,
                 'last_name' => $strLastName,
                 'employee_type_id' => $strEmployeeTypeId,
+                'resortId' => $strresortId,                
                 'address_line1' => $strAddressLine1,
                 'age' => $strAge,
                 'birth_date' => $strBirthDate,
@@ -39,10 +41,10 @@ class Employee_model extends CI_Model {
                 'mobile_no' => $strMobileNo,
                 'password' => $strPassword,
                 'old_password' => $strOldPassword,
-                'created_by' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
-                'created_on' => date('Y-m-d h:i:s'),
-                'updated_by' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
-                'updated_on' => date('Y-m-d h:i:s')
+                'createdBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
+                'createdOn' => date('Y-m-d h:i:s'),
+                'updatedBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
+                'updatedOn' => date('Y-m-d h:i:s')
         );
             
         
@@ -51,7 +53,8 @@ class Employee_model extends CI_Model {
         return ($this->db->affected_rows() != 1) ? false : true;
     }
     function updateEmployee() {
-        
+//         display($_POST);
+//        exit;
         $arrPostData = (true == isset($_POST['params'])) ? $_POST['params'] : array();
         
         $intId = (true == isset($arrPostData['id']) && true == valStr($arrPostData['id'])) ? $arrPostData['id'] : NULL;
@@ -59,19 +62,20 @@ class Employee_model extends CI_Model {
         $arrPostData = (true == isset($_POST['params'])) ? $_POST['params'] : array();
         
         
-        $strFirstName           = (true == isset($arrPostData['first_name']) && true == valStr($arrPostData['first_name'])) ? $arrPostData['first_name'] : NULL;
-        $strMiddleName          = (true == isset($arrPostData['middle_name']) && true == valStr($arrPostData['middle_name'])) ? $arrPostData['middle_name'] : NULL;
-        $strLastName            = (true == isset($arrPostData['last_name']) && true == valStr($arrPostData['last_name'])) ? $arrPostData['last_name'] : NULL;
-        $strEmployeeTypeId      = (true == isset($arrPostData['employee_type_id']) && true == valStr($arrPostData['employee_type_id'])) ? $arrPostData['employee_type_id'] : NULL;
-        $strAddressLine1        = (true == isset($arrPostData['address_line1']) && true == valStr($arrPostData['address_line1'])) ? $arrPostData['address_line1'] : NULL;
+       $strFirstName           = (true == isset($arrPostData['firstName']) && true == valStr($arrPostData['firstName'])) ? $arrPostData['firstName'] : NULL;
+        $strMiddleName          = (true == isset($arrPostData['middleName']) && true == valStr($arrPostData['middleName'])) ? $arrPostData['middleName'] : NULL;
+        $strLastName            = (true == isset($arrPostData['lastName']) && true == valStr($arrPostData['lastName'])) ? $arrPostData['lastName'] : NULL;
+        $strEmployeeTypeId      = (true == isset($arrPostData['employeeTypeId']) && true == valStr($arrPostData['employeeTypeId'])) ? $arrPostData['employeeTypeId'] : NULL;
+        $strresortId            = (true == isset($arrPostData['resortId']) && true == valStr($arrPostData['resortId'])) ? $arrPostData['resortId'] : NULL;
+        $strAddressLine1        = (true == isset($arrPostData['addressLine1']) && true == valStr($arrPostData['addressLine1'])) ? $arrPostData['addressLine1'] : NULL;
         $strAge                 = (true == isset($arrPostData['age']) && true == valStr($arrPostData['age'])) ? $arrPostData['age'] : NULL;
-        $strBirthDate           = (true == isset($arrPostData['birth_date']) && true == valStr($arrPostData['birth_date'])) ? $arrPostData['birth_date'] : NULL;
+        $strBirthDate           = (true == isset($arrPostData['birthDate']) && true == valStr($arrPostData['birthDate'])) ? $arrPostData['birthDate'] : NULL;
         $strGender              = (true == isset($arrPostData['gender']) && true == valStr($arrPostData['gender'])) ? $arrPostData['gender'] : NULL;
-        $strEmailId             = (true == isset($arrPostData['email_id']) && true == valStr($arrPostData['email_id'])) ? $arrPostData['email_id'] : NULL;
-        $strOfficeEmailId       = (true == isset($arrPostData['office_email_id']) && true == valStr($arrPostData['office_email_id'])) ? $arrPostData['office_email_id'] : NULL;
-        $strMobileNo            = (true == isset($arrPostData['mobile_no']) && true == valStr($arrPostData['mobile_no'])) ? $arrPostData['mobile_no'] : NULL;
+        $strEmailId             = (true == isset($arrPostData['emailId']) && true == valStr($arrPostData['emailId'])) ? $arrPostData['emailId'] : NULL;
+        $strOfficeEmailId       = (true == isset($arrPostData['officeEmailId']) && true == valStr($arrPostData['officeEmailId'])) ? $arrPostData['officeEmailId'] : NULL;
+        $strMobileNo            = (true == isset($arrPostData['mobileNo']) && true == valStr($arrPostData['mobileNo'])) ? $arrPostData['mobileNo'] : NULL;
         $strPassword            = (true == isset($arrPostData['password']) && true == valStr($arrPostData['password'])) ? md5($arrPostData['password']) : NULL;
-        $strOldPassword         = (true == isset($arrPostData['old_password']) && true == valStr($arrPostData['old_password'])) ? md5($arrPostData['old_password']) : NULL;
+        $strOldPassword         = (true == isset($arrPostData['oldPassword']) && true == valStr($arrPostData['oldPassword'])) ? md5($arrPostData['oldPassword']) : NULL;
       
        
             $data = array(
@@ -79,6 +83,7 @@ class Employee_model extends CI_Model {
                 'middle_name' => $strMiddleName,
                 'last_name' => $strLastName,
                 'employee_type_id' => $strEmployeeTypeId,
+                'resortId' => $strresortId,                
                 'address_line1' => $strAddressLine1,
                 'age' => $strAge,
                 'birth_date' => $strBirthDate,
@@ -88,10 +93,10 @@ class Employee_model extends CI_Model {
                 'mobile_no' => $strMobileNo,
                 'password' => $strPassword,
                 'old_password' => $strOldPassword,
-                'created_by' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
-                'created_on' => date('Y-m-d h:i:s'),
-                'updated_by' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
-                'updated_on' => date('Y-m-d h:i:s')
+                'createdBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
+                'createdOn' => date('Y-m-d h:i:s'),
+                'updatedBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
+                'updatedOn' => date('Y-m-d h:i:s')
         );
             
         $this->db->where(array('id' => $intId));

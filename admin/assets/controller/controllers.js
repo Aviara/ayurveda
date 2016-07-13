@@ -262,8 +262,12 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
         $http.get(url).success(function (data) {
             $scope.employeeTypeList = data.employeeTypeList;
         });
-
-        if ($routeParams.employeeId) {
+        var url = erpSystem.baseUrl + 'ResortUsefulInfo/getAllResorts';
+        $http.get(url).success(function (data) {
+            $scope.getAllResorts = data.ResortList;
+         });           
+ 
+       if ($routeParams.employeeId) {
             $scope.employeeId = $routeParams.employeeId;
             var url = erpSystem.baseUrl + 'employee/getEmployee/' + $scope.employeeId;
             $http.get(url).success(function (data) {
@@ -277,6 +281,7 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
             var url = erpSystem.baseUrl + 'employee/getEmployeeList';
             $http.get(url).success(function (data) {
                 $scope.employeeList = data.employeeList;
+             
             });
         }
 

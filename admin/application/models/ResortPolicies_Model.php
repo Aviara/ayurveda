@@ -5,7 +5,11 @@ class ResortPolicies_model extends CI_Model {
     function insert_into_db() {
 //        display($_POST);
 //        exit;
-        
+        $userData = $this->session->userdata('user');
+        $empTypeId = $userData->employee_type_id;
+        $resortIdOfEmployee = $userData->resortId;
+//        display();
+//        exit;
         $arrPostData = (true == isset($_POST['params'])) ? $_POST['params'] : array();
         
        // $arrPostData = $_POST['params'];
@@ -15,7 +19,17 @@ class ResortPolicies_model extends CI_Model {
 
 //         if($this->session->userdata('id') == 1){
 //            $query = $this->db->query("SELECT * FROM branches ORDER BY id DESC LIMIT 1")->row_array();
+        if($empTypeId == '23'){
+            $strresortid = $resortIdOfEmployee;        
+        }
+        else {
+            $strresortid = (true == isset($arrPostData['resortId']) && true == valStr($arrPostData['resortId'])) ? $arrPostData['resortId'] : NULL;        
+        }
+            
+    
+                         
             $data = array(
+                
                 'heading' => $strheading,
                 'Description' => $strDescription,
                 'Created_on' => date('Y-m-d h:i:s'),

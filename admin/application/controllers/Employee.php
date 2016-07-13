@@ -130,6 +130,7 @@ class Employee extends CI_Controller {
         echo json_encode($arrEmployeeManagers);
         exit;
     }
+    
 public function downloadEmployeeDetails() {
 
         //$this->load->library('phpexcel');
