@@ -16,15 +16,13 @@ class ResortUsefulInfo_model extends CI_Model {
             $strDescription    = (true == isset($arrPostData['Description']) && true == valStr($arrPostData['Description'])) ? $arrPostData['Description'] : NULL;
         
         $data = array(
-            if()
                 'resortId' => $strresortId,
-            
                 'heading' => $strheading,
                 'Description' => $strDescription,
-                'Created_by' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
-                'Created_on' => date('Y-m-d h:i:s'),
-                'Updated_by' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
-                'Updated_on' => date('Y-m-d h:i:s')
+                'createdBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
+                'createdOn' => date('Y-m-d h:i:s'),
+                'updatedBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
+                'updatedOn' => date('Y-m-d h:i:s')
         );
             
        
@@ -65,10 +63,10 @@ class ResortUsefulInfo_model extends CI_Model {
                 'resortId' => $strresortId,
                 'heading' => $strheading,
                 'Description' => $strDescription,
-                'created_by' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
-                'created_on' => date('Y-m-d h:i:s'),
-                'updated_by' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
-                'updated_on' => date('Y-m-d h:i:s')
+                'createdBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
+                'createdOn' => date('Y-m-d h:i:s'),
+                'updatedBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
+                'updatedOn' => date('Y-m-d h:i:s')
         );
         
         $this->db->where(array('id' => $intId));

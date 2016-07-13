@@ -85,16 +85,6 @@
                                 </select>
                             </div>
                         </div>
-
-                        <div class="form-group col-md-4" ng-class="{ 'has-error': employeeSave.employee_type_id.$touched && employeeSave.employee_type_id.$invalid }">
-                            <label class="col-md-4 control-label" for="url">Select Resort</label>
-                           <div class="col-sm-8">  
-                                <select id="form-field-select-1" class="form-control" ng-model="employee.resortId" name="id">
-                                    <option value="">Select Resort</option>
-                                    <option ng-repeat="getresortSave in getAllResorts track by $index" value="{{getresortSave.id}}">  {{getresortSave.name}} </option>
-                                </select>
-                            </div>
-                        </div>    
 <!--                        <div class="form-group col-md-5" ng-class="{ 'has-error': employeeSave.driving_listien_no.$touched && employeeSave.driving_listien_no.$invalid }">
                             <label class="col-sm-4 control-label" for="driving_listien_no">Driving Listien No</label>
                             <div class="col-sm-8">

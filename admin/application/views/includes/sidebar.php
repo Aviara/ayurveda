@@ -57,43 +57,21 @@
                 <li>
                     <a href="javascript:void(0)"><i class="fa fa-info"></i> <span class="title pull-left">Resort Policies&Info</span><span class="label label-success pull-right ">Add/View/Delete</span></i> </a>
                     <ul class="sub-menu">
-                        
                         <li><a href="#/add-policies">Add Resort Policies<i class="icon-arrow"></i><span class="label label-success pull-right ">Add</span></a></li>
                         <li><a href="#/view-policies">View Resort Policies<i class="icon-arrow"></i><span class="label label-success pull-right ">View</span></a></li>
                         <li><a href="#/add-resort-useful-info">Add Resort Info<i class="icon-arrow"></i><span class="label label-success pull-right ">Add</span></a></li>
-                        <li><a href="#/view-resort-useful-info">View Resort Info<i class="icon-arrow"></i><span class="label label-success pull-right ">View</span></a></li>
-                        
+                        <li><a href="#/view-resort-useful-info"><span class="title"> View Resort Useful-info</span><span class="label label-success pull-right ">view</span></a></li>
                     </ul>
                 </li>
-                <li>
-                   <li>
+                  <li>
                     <a href="javascript:void(0)"><i class="fa fa-cogs"></i> <span class="title"> Employees </span><i class="icon-arrow"></i> </a>
                     <ul class="sub-menu">
-                        <li>
-                            <a href="#/add-employee">
-                                <span class="title"> Add Employee</span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#/view-employees">
-                                <span class="title"> View Employees </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#/add-employee-type">
-                                <span class="title"> Add Employee Type </span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#/view-employee-types">
-                                <span class="title"> View Employee Type </span>
-                            </a>
-                        </li>
-                        
+                        <li><a href="#/add-employee"> <span class="title"> Add Employee</span></a></li>
+                        <li><a href="#/view-employees"><span class="title"> View Employees </span></a></li>
+                        <li><a href="#/add-employee-type"><span class="title"> Add Employee Type </span></a></li>
+                        <li><a href="#/view-employee-types"><span class="title"> View Employee Type </span></a></li>       
                     </ul>
                 </li>
-                </li>
-               
             </ul>
             <!-- end: MAIN NAVIGATION MENU -->
         </div>

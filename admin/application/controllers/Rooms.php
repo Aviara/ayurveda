@@ -33,18 +33,18 @@ class Rooms extends CI_Controller {
         exit;
     
         }
-    
-//    public function getAllRoomTypesByResortId() {
-//        $query = $this->db->get_where('tbl_room_type');
+     
+//   public function getAllRoomTypesByResortId() {
+//       $query = $this->db->get_where('tbl_room_type');
 //
-//        $arrData = array();
-//        foreach ($query->result() as $row) {
-//           $arrData[$row->id] = $row;
-//        }
+//       $arrData = array();
+//       foreach ($query->result() as $row) {
+//          $arrData[$row->id] = $row;
+//       }
 //        
-//        echo json_encode(array('roomTypeList' => $arrData));
-//        exit;
-//    }
+//       echo json_encode(array('roomTypeList' => $arrData));
+//       exit;
+//   }
 
     public function getStudddList() {
         $objUser = $this->session->userdata('user');

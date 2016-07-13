@@ -42,7 +42,7 @@ class Employee extends CI_Controller {
         
         $this->db->select('e.*, et.id as employee_type_id, et.name as employee_type');
         $this->db->from('tbl_employees e');
-        $this->db->join('tbl_employee_types et', 'e.employee_type_id = et.id', 'left');
+        $this->db->join('tbl_employee_types et', 'e.employeeTypeId = et.id', 'left');
 //         if (1 == $objUser->employee_type_id) {
 //            
 //        } else {
