@@ -1,16 +1,10 @@
     'use strict';
 
-/* App Module */
-<<<<<<< HEAD
-//kk test 14 -4th
-=======
-
-//kalpesh test 14-jul dharam
 
 
 
 //dharam kalpesh 
->>>>>>> refs/remotes/origin/master
+
 var laundryApp = angular.module('laundryErp', [
     'ngRoute',
     'datatables',
