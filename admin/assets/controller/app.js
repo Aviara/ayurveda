@@ -2,7 +2,7 @@
 
 
 /* App Module */
-//branch added
+//branch added kk
 var laundryApp = angular.module('laundryErp', [
     'ngRoute',
     'datatables',
