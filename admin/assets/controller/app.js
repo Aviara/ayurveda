@@ -1,11 +1,8 @@
     'use strict';
 
-<<<<<<< HEAD
+
 /* App Module */
-<<<<<<< HEAD
-
-
->>>>>>> refs/remotes/origin/master
+//branch added
 var laundryApp = angular.module('laundryErp', [
     'ngRoute',
     'datatables',
