@@ -2,7 +2,7 @@
 
 /* App Module */
 
-//kalpesh test 14-jul
+//kalpesh test 14-jul dharam
 
 var laundryApp = angular.module('laundryErp', [
     'ngRoute',
