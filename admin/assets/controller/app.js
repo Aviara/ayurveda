@@ -3,7 +3,7 @@
 
 
 
-//dharam kalpesh 
+//dharam kalpesh july 
 
 var laundryApp = angular.module('laundryErp', [
     'ngRoute',
