@@ -1,11 +1,16 @@
     'use strict';
 
+<<<<<<< HEAD
 /* App Module */
 <<<<<<< HEAD
 //kalpesh test 14-july jeevan
 =======
+=======
+>>>>>>> 5fdf4e181bfaa2c5104875f28ee00cdb63ddd12f
 
-//kalpesh test 14-jul
+//kk
+
+//dharam kalpesh july 
 
 >>>>>>> refs/remotes/origin/master
 var laundryApp = angular.module('laundryErp', [
