@@ -1,9 +1,7 @@
     'use strict';
 
-
 /* App Module */
-//branch added
-//hhhhh
+//kk test
 var laundryApp = angular.module('laundryErp', [
     'ngRoute',
     'datatables',
@@ -283,18 +281,18 @@ laundryApp.config(['$routeProvider',
                     templateUrl: baseUrlLink + 'partials/hotel_rooms/add_room.html',
                     controller: 'Rooms'
                }).
-//                  when('/new-employee-type', {
-//                    templateUrl: baseUrlLink + 'partials/employees/add-employee-type.html',
-//                    controller: 'RoomType'
-//                }).
-//                  when('/new-room-type/edit/:roomTypeId', {
-//                    templateUrl: baseUrlLink + 'partials/employees/add-employee-type.html',
-//                    controller: 'RoomType'
-//                }).
-//                  when('/view-employee-types', {
-//                    templateUrl: baseUrlLink + 'partials/employees/view-employee-types.html',
-//                    controller: 'RoomType'
-//                }).     
+                  when('/new-employee-type', {
+                    templateUrl: baseUrlLink + 'partials/employees/add-employee-type.html',
+                    controller: 'RoomType'
+                }).
+                  when('/new-room-type/edit/:roomTypeId', {
+                    templateUrl: baseUrlLink + 'partials/employees/add-employee-type.html',
+                    controller: 'RoomType'
+                }).
+                  when('/view-employee-types', {
+                    templateUrl: baseUrlLink + 'partials/employees/view-employee-types.html',
+                    controller: 'RoomType'
+                }).     
 //                when('/http://localhost/laundry-erp/partials/challan-status/print-label-window.html',{
 //                    templateUrl: 'http://localhost/laundry-erp/partials/challan-status/print-label-window.html',
 //                    controller: 'ChallanSearchController'
