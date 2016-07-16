@@ -13,12 +13,12 @@ class ResortUsefulInfo_model extends CI_Model {
         
             $strresortId  = (true == isset($arrPostData['resortId']) && true == valStr($arrPostData['resortId'])) ? $arrPostData['resortId'] : NULL;
             $strheading    = (true == isset($arrPostData['heading']) && true == valStr($arrPostData['heading'])) ? $arrPostData['heading'] : NULL;
-            $strDescription    = (true == isset($arrPostData['Description']) && true == valStr($arrPostData['Description'])) ? $arrPostData['Description'] : NULL;
+            $strDescription    = (true == isset($arrPostData['description']) && true == valStr($arrPostData['description'])) ? $arrPostData['description'] : NULL;
         
         $data = array(
                 'resortId' => $strresortId,
                 'heading' => $strheading,
-                'Description' => $strDescription,
+                'description' => $strDescription,
                 'createdBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
                 'createdOn' => date('Y-m-d h:i:s'),
                 'updatedBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
@@ -57,14 +57,12 @@ class ResortUsefulInfo_model extends CI_Model {
         
              $strresortId  = (true == isset($arrPostData['resortId']) && true == valStr($arrPostData['resortId'])) ? $arrPostData['resortId'] : $objresort->id;
             $strheading    = (true == isset($arrPostData['heading']) && true == valStr($arrPostData['heading'])) ? $arrPostData['heading'] : $objresort->id;
-        $strDescription    = (true == isset($arrPostData['Description']) && true == valStr($arrPostData['Description'])) ? $arrPostData['Description'] : $objresort->id;
+        $strDescription    = (true == isset($arrPostData['description']) && true == valStr($arrPostData['description'])) ? $arrPostData['description'] : $objresort->id;
         
         $data = array(
                 'resortId' => $strresortId,
                 'heading' => $strheading,
-                'Description' => $strDescription,
-                'createdBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
-                'createdOn' => date('Y-m-d h:i:s'),
+                'description' => $strDescription,
                 'updatedBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
                 'updatedOn' => date('Y-m-d h:i:s')
         );

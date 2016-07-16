@@ -27,13 +27,24 @@ class Rooms extends CI_Controller {
 
         $arrData = array();
         foreach ($query->result() as $row) {
-            $arrData[$row->id] = $row;
+            $arrData[] = $row;
          }    
            echo json_encode(array('roomTypeList' => $arrData));
         exit;
     
         }
-     
+
+      public function getAllRoomNumber() {
+        $query = $this->db->get('tbl_rooms');
+
+        $arrData = array();
+        foreach ($query->result() as $row) {
+            $arrData[] = $row;
+         }    
+           echo json_encode(array('roomNumberList' => $arrData));
+        exit;
+    
+        }
 //   public function getAllRoomTypesByResortId() {
 //       $query = $this->db->get_where('tbl_room_type');
 //

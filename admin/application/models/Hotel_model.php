@@ -11,34 +11,32 @@ class Hotel_model extends CI_Model {
        // $arrPostData = $_POST['params'];
         
         $strResort              = (true == isset($arrPostData['resortId']) && true == valStr($arrPostData['resortId'])) ? $arrPostData['resortId'] : NULL;
-        $strroomTypeId          = (true == isset($arrPostData['room_type_id']) && true == valStr($arrPostData['room_type_id'])) ? $arrPostData['room_type_id'] : NULL;
-        $strbedcost             = (true == isset($arrPostData['Cost_for_extra_bed']) && true == valStr($arrPostData['Cost_for_extra_bed'])) ? $arrPostData['Cost_for_extra_bed'] : NULL;
-        $strromnumber           = (true == isset($arrPostData['roomno']) && true == valStr($arrPostData['roomno'])) ? $arrPostData['roomno'] : NULL;
-        $strcstpernight         = (true == isset($arrPostData['Cost_per_night']) && true == valStr($arrPostData['Cost_per_night'])) ? $arrPostData['Cost_per_night'] : NULL;
+        $strroomTypeId          = (true == isset($arrPostData['roomTypeId']) && true == valStr($arrPostData['roomTypeId'])) ? $arrPostData['roomTypeId'] : NULL;
+        $strbedcost             = (true == isset($arrPostData['costForExtraBed']) && true == valStr($arrPostData['costForExtraBed'])) ? $arrPostData['costForExtraBed'] : NULL;
+        $strromnumber           = (true == isset($arrPostData['roomNo']) && true == valStr($arrPostData['roomNo'])) ? $arrPostData['roomNo'] : NULL;
+        $strcstpernight         = (true == isset($arrPostData['costPerNight']) && true == valStr($arrPostData['costPerNight'])) ? $arrPostData['costPerNight'] : NULL;
         $strsize                = (true == isset($arrPostData['size']) && true == valStr($arrPostData['size'])) ? $arrPostData['size'] : NULL;
-        $strdiscription         = (true == isset($arrPostData['Description']) && true == valStr($arrPostData['Description'])) ? $arrPostData['Description'] : NULL;
-        $strview                = (true == isset($arrPostData['Window_view']) && true == valStr($arrPostData['Window_view'])) ? $arrPostData['Window_view'] : NULL;
-        $strnoofbeds           = (true == isset($arrPostData['Number_of_beds']) && true == valStr($arrPostData['Number_of_beds'])) ? $arrPostData['Number_of_beds'] : NULL; 
+        $strdiscription         = (true == isset($arrPostData['description']) && true == valStr($arrPostData['description'])) ? $arrPostData['description'] : NULL;
+        $strview                = (true == isset($arrPostData['windowView']) && true == valStr($arrPostData['windowView'])) ? $arrPostData['windowView'] : NULL;
+        $strnoofbeds           = (true == isset($arrPostData['numberOfBeds']) && true == valStr($arrPostData['numberOfBeds'])) ? $arrPostData['numberOfBeds'] : NULL; 
 //        $strroomstatus          = (true == isset($arrPostData['Status']) && true == valStr($arrPostData['Status'])) ? $arrPostData['Status'] : NULL; 
 //         if($this->session->userdata('id') == 1){
 //            $query = $this->db->query("SELECT * FROM branches ORDER BY id DESC LIMIT 1")->row_array();
             $data = array(
                 'resortId' => $strResort,
-                'room_type_Id' => $strroomTypeId,               
-                'roomno' => $strromnumber,
-                'Status' =>  'Availabal',
-                'Number_of_beds' =>  $strnoofbeds,
-                'Cost_for_extra_bed' => $strbedcost,
-                'Cost_per_night' => $strcstpernight,
+                'roomTypeId' => $strroomTypeId,               
+                'roomNo' => $strromnumber,
+                'status' =>  'Availabal',
+                'numberOfBeds' =>  $strnoofbeds,
+                'CostForExtraBed' => $strbedcost,
+                'costPerNight' => $strcstpernight,
                 'size' => $strsize,
-                'Description' => $strdiscription ,
-                'Window_view' => $strview,
-                 'Created_on' => date('Y-m-d h:i:s'),
-                //'updatedOn' =>date('Y-m-d h:i:s'),
-//                'createdBy' => $strFirstName,
-//                'createdOn' => $strEmployeeTypeId,
-//               // 'updatedBy' => $strAddressLine1,
-//                'updatedOn' => $strMobileNo,
+                'description' => $strdiscription ,
+                'windowView' => $strview,
+                'createdBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
+                'createdOn' => date('Y-m-d h:i:s'),
+                'updatedBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
+                'updatedOn' => date('Y-m-d h:i:s')
         );
             
 //        }else{
@@ -77,29 +75,30 @@ class Hotel_model extends CI_Model {
        $arrPostData = (true == isset($_POST['params'])) ? $_POST['params'] : array();
         
         $strResort              = (true == isset($arrPostData['resortId']) && true == valStr($arrPostData['resortId'])) ? $arrPostData['resortId'] : NULL;
-        $strroomTypeId          = (true == isset($arrPostData['room_type_Id']) && true == valStr($arrPostData['room_type_Id'])) ? $arrPostData['room_type_Id'] : NULL;
-        $strbedcost             = (true == isset($arrPostData['Cost_for_extra_bed']) && true == valStr($arrPostData['Cost_for_extra_bed'])) ? $arrPostData['Cost_for_extra_bed'] : NULL;
-        $strromnumber           = (true == isset($arrPostData['roomno']) && true == valStr($arrPostData['roomno'])) ? $arrPostData['roomno'] : NULL;
-        $strcstpernight         = (true == isset($arrPostData['Cost_per_night']) && true == valStr($arrPostData['Cost_per_night'])) ? $arrPostData['Cost_per_night'] : NULL;
+        $strroomTypeId          = (true == isset($arrPostData['roomTypeId']) && true == valStr($arrPostData['roomTypeId'])) ? $arrPostData['roomTypeId'] : NULL;
+        $strbedcost             = (true == isset($arrPostData['costForExtraBed']) && true == valStr($arrPostData['costForExtraBed'])) ? $arrPostData['costForExtraBed'] : NULL;
+        $strromnumber           = (true == isset($arrPostData['roomNo']) && true == valStr($arrPostData['roomNo'])) ? $arrPostData['roomNo'] : NULL;
+        $strcstpernight         = (true == isset($arrPostData['costPerNight']) && true == valStr($arrPostData['costPerNight'])) ? $arrPostData['costPerNight'] : NULL;
         $strsize                = (true == isset($arrPostData['size']) && true == valStr($arrPostData['size'])) ? $arrPostData['size'] : NULL;
-        $strdiscription         = (true == isset($arrPostData['Description']) && true == valStr($arrPostData['Description'])) ? $arrPostData['Description'] : NULL;
-        $strview                = (true == isset($arrPostData['Window_view']) && true == valStr($arrPostData['Window_view'])) ? $arrPostData['Window_view'] : NULL;
-        $strnoofbeds           = (true == isset($arrPostData['Number_of_beds']) && true == valStr($arrPostData['Number_of_beds'])) ? $arrPostData['Number_of_beds'] : NULL; 
-        $strroomstatus          = (true == isset($arrPostData['Status']) && true == valStr($arrPostData['Status'])) ? $arrPostData['Status'] : NULL; 
+        $strdiscription         = (true == isset($arrPostData['description']) && true == valStr($arrPostData['description'])) ? $arrPostData['description'] : NULL;
+        $strview                = (true == isset($arrPostData['windowView']) && true == valStr($arrPostData['windowView'])) ? $arrPostData['windowView'] : NULL;
+        $strnoofbeds           = (true == isset($arrPostData['numberOfBeds']) && true == valStr($arrPostData['numberOfBeds'])) ? $arrPostData['numberOfBeds'] : NULL; 
 ////         if($this->session->userdata('id') == 1){
 //            $query = $this->db->query("SELECT * FROM branches ORDER BY id DESC LIMIT 1")->row_array();
             $data = array(
                 //'resortId' => $strResort,
-                'roomno' => $strromnumber,
-                'room_type_Id' => $strroomTypeId,
-                'Status' =>  $strroomstatus,
-                'Number_of_beds' =>  $strnoofbeds,
-                'Cost_for_extra_bed' => $strbedcost,
-                'Cost_per_night' => $strcstpernight,
+                'resortId' => $strResort,
+                'roomTypeId' => $strroomTypeId,               
+                'roomNo' => $strromnumber,
+                'status' =>  'Availabal',
+                'numberOfBeds' =>  $strnoofbeds,
+                'CostForExtraBed' => $strbedcost,
+                'costPerNight' => $strcstpernight,
                 'size' => $strsize,
-                'Description' => $strdiscription ,
-                'Window_view' => $strview,
-                'Updated_on' => date('Y-m-d h:i:s'),       
+                'description' => $strdiscription ,
+                'windowView' => $strview,
+                'updatedBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
+                'updatedOn' => date('Y-m-d h:i:s')     
         );
         
         $this->db->where(array('id' => $intId));

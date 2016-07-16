@@ -23,8 +23,6 @@ class ResortUsefulInfo extends CI_Controller {
     }
     
 
-
-    
     public function getAllResorts() {
         $query = $this->db->get('tbl_resorts');
 
@@ -34,6 +32,7 @@ class ResortUsefulInfo extends CI_Controller {
         }
         
         echo json_encode(array('ResortList' => $arrData));
+        
         exit;
     }
     

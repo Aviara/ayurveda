@@ -9,11 +9,11 @@
                     <ol class="breadcrumb">
                         <li>
                             <a href="#">
-                               Hotel Rooms
+                               Rooms Offer's
                             </a>
                         </li>
                         <li class="active">
-                            Add Rooms
+                            Add Room Offer & Benefit
                         </li>
                     </ol>
                 </div>
@@ -35,27 +35,12 @@
 
                     <form role="form" class="form-horizontal" ng-submit="saveRoomOffer(sro)" name="employeeSave" novalidate>
                         <div class="row">
-                      		<div class="form-group col-sm-4" ng-class="{ 'has-error': employeeSave.driving_listien_no.$touched && employeeSave.driving_listien_no.$invalid }">
-                            <label class="col-sm-4 control-label" for="roomNumber">Room Number</label>
-                            <div class="col-sm-8">
-                                <select id="form-field-select-1" class="form-control" ng-model="sro.resort_Id" name="roomTypeId">
-                                    <option value="">Select Room Type</option>
-                                    <option value="Single Bed">Single Bed</option>
-                                    <option value="Double bed">Double bed</option> 
-                                    <option value="Family Room">Family Room</option> 
-                                    <option value="Luxury Room">Luxury Room</option>
-                                </select>
-                            </div>
-                          </div>
                         <div class="form-group col-md-4">
                             <label class="col-md-4 control-label" for="roomTypeId">Select Room No</label>
                             <div class="col-md-8">
-                              <select id="form-field-select-1" class="form-control" ng-model="sro.room_Id" name="roomTypeId">
-                                    <option value="">Select Room No</option>
-                                    <option value="Single Bed">Single Bed</option>
-                                    <option value="Double bed">Double bed</option> 
-                                    <option value="Family Room">Family Room</option> 
-                                    <option value="Luxury Room">Luxury Room</option>
+                                <select  class="form-control" ng-model="sro.roomId" name="roomId">
+                                    <option value="">Select Room Number</option>
+                                    <option ng-repeat="roomNumber in roomNumberList track by $index" value="{{roomNumber.roomNo}}">  {{roomNumber.roomNo}} </option>
                                 </select>
                              <div id="errorMiddleName"></div>
                             </div>

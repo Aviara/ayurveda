@@ -27,20 +27,20 @@ class Employee_model extends CI_Model {
       
        
               $data = array(
-                'first_name' => $strFirstName,
-                'middle_name' => $strMiddleName,
-                'last_name' => $strLastName,
-                'employee_type_id' => $strEmployeeTypeId,
+                'firstName' => $strFirstName,
+                'middleName' => $strMiddleName,
+                'lastName' => $strLastName,
+                'employeeTypeId' => $strEmployeeTypeId,
                 'resortId' => $strresortId,                
-                'address_line1' => $strAddressLine1,
+                'addressLine1' => $strAddressLine1,
                 'age' => $strAge,
-                'birth_date' => $strBirthDate,
+                'birthDate' => $strBirthDate,
                 'gender' => $strGender,
-                'email_id' => $strEmailId,
-                'office_email_id' => $strOfficeEmailId,
-                'mobile_no' => $strMobileNo,
+                'emailId' => $strEmailId,
+                'officeEmailId' => $strOfficeEmailId,
+                'mobileNo' => $strMobileNo,
                 'password' => $strPassword,
-                'old_password' => $strOldPassword,
+                'oldPassword' => $strOldPassword,
                 'createdBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
                 'createdOn' => date('Y-m-d h:i:s'),
                 'updatedBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
@@ -62,7 +62,7 @@ class Employee_model extends CI_Model {
         $arrPostData = (true == isset($_POST['params'])) ? $_POST['params'] : array();
         
         
-       $strFirstName           = (true == isset($arrPostData['firstName']) && true == valStr($arrPostData['firstName'])) ? $arrPostData['firstName'] : NULL;
+        $strFirstName           = (true == isset($arrPostData['firstName']) && true == valStr($arrPostData['firstName'])) ? $arrPostData['firstName'] : NULL;
         $strMiddleName          = (true == isset($arrPostData['middleName']) && true == valStr($arrPostData['middleName'])) ? $arrPostData['middleName'] : NULL;
         $strLastName            = (true == isset($arrPostData['lastName']) && true == valStr($arrPostData['lastName'])) ? $arrPostData['lastName'] : NULL;
         $strEmployeeTypeId      = (true == isset($arrPostData['employeeTypeId']) && true == valStr($arrPostData['employeeTypeId'])) ? $arrPostData['employeeTypeId'] : NULL;
@@ -79,20 +79,20 @@ class Employee_model extends CI_Model {
       
        
             $data = array(
-                'first_name' => $strFirstName,
-                'middle_name' => $strMiddleName,
-                'last_name' => $strLastName,
-                'employee_type_id' => $strEmployeeTypeId,
+               'firstName' => $strFirstName,
+                'middleName' => $strMiddleName,
+                'lastName' => $strLastName,
+                'employeeTypeId' => $strEmployeeTypeId,
                 'resortId' => $strresortId,                
-                'address_line1' => $strAddressLine1,
+                'addressLine1' => $strAddressLine1,
                 'age' => $strAge,
-                'birth_date' => $strBirthDate,
+                'birthDate' => $strBirthDate,
                 'gender' => $strGender,
-                'email_id' => $strEmailId,
-                'office_email_id' => $strOfficeEmailId,
-                'mobile_no' => $strMobileNo,
+                'emailId' => $strEmailId,
+                'officeEmailId' => $strOfficeEmailId,
+                'mobileNo' => $strMobileNo,
                 'password' => $strPassword,
-                'old_password' => $strOldPassword,
+                'oldPassword' => $strOldPassword,
                 'createdBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
                 'createdOn' => date('Y-m-d h:i:s'),
                 'updatedBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,

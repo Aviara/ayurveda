@@ -15,10 +15,10 @@ class Rooms_model extends CI_Model {
         $data = array(
                 'name' => $strRoomtype,
                 'resortId' => $strresortId,
-                'created_by' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
-                'created_on' => date('Y-m-d h:i:s'),
-                'updated_by' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
-                'updated_on' => date('Y-m-d h:i:s')
+                'createdBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
+                'createdOn' => date('Y-m-d h:i:s'),
+                'updatedBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
+                'updatedOn' => date('Y-m-d h:i:s')
         );
             
        
@@ -55,10 +55,10 @@ class Rooms_model extends CI_Model {
         $data = array(
                 'name' => $strRoomtype,
                 'resortId' => $strresortId,
-                'created_by' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
-                'created_on' => date('Y-m-d h:i:s'),
-                'updated_by' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
-                'updated_on' => date('Y-m-d h:i:s')
+                'createdBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
+                'createdOn' => date('Y-m-d h:i:s'),
+                'updatedBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
+                'updatedOn' => date('Y-m-d h:i:s')
         );
         
         $this->db->where(array('id' => $intId));

@@ -38,9 +38,23 @@ class ResortPolicies extends CI_Controller {
    
     
     public function getAllPoliciesByResottId() {   //***** Where is the id ?? *******//
-        $query = $this->db->get('tbl_policies');
-
+       
+        $userData = $this->session->userdata('user');
+        $empTypeId = $userData->employeeTypeId;
+        $resortIdOfEmployee = $userData->resortId;
+        
+        $this->db->select('p.*');
+        $this->db->from('tbl_policies p');
+        
+        if (super_admin == $empTypeId) { //super_admin
+            
+        } else {
+            $this->db->where('p.resortId', $resortIdOfEmployee);
+           
+        }
+        $query = $this->db->get();
         $arrData = array();
+        
         foreach ($query->result() as $row) {
             $arrData[$row->id] = $row;
         }

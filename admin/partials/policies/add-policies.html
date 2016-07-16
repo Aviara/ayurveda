@@ -18,7 +18,7 @@
                     </ol>
                 </div>
                 <div class="col-md-8">       
-                    <a href="#/view-room-offer"><button type="button" value="button" name="view-room-offer" class="btn btn-success">View Room offer</button></a>
+                    <a href="#/view-policies"><button type="button" value="button" name="view-policies" class="btn btn-success">View Room Policies</button></a>
                 </div>
             </div>
             <div class="panel panel-white">
@@ -33,20 +33,20 @@
                         </div>
                     </div>
 
-                    <form role="form" class="form-horizontal" ng-submit="saveResortPolicies(srp)" name="employeeSave" novalidate>
+                    <form role="form" class="form-horizontal" ng-submit="saveResortPolicies(srp)" name="employeeSave" novalidate><!--  -->
                         <div class="row">
-                      		<div class="form-group col-sm-4" ng-class="{ 'has-error': employeeSave.driving_listien_no.$touched && employeeSave.driving_listien_no.$invalid }">
+                      	    <div ng-show="currentEmployeeTypeId === '22'"  class="form-group col-sm-4" ng-class="{ 'has-error': employeeSave.resortId.$touched && employeeSave.resortId.$invalid }">
                             <label class="col-sm-4 control-label" for="roomNumber">Select Resort</label>
                             <div class="col-sm-8">
-                                <select id="form-field-select-1" class="form-control" ng-model="srp.resort_Id" name="roomTypeId">
+                                 <select id="form-field-select-1" class="form-control" ng-model="srp.resortId" name="id">
                                     <option value="">Select Resort</option>
-                                    <option value="Single Bed">Sea Side</option>
-                                    <option value="Double bed">Lake view</option>
+                                    <option ng-repeat="getresortSave in getAllResorts track by $index" value="{{getresortSave.id}}">  {{getresortSave.name}} </option>
                                 </select>
                             </div>
                           </div>
-							</div>                      
+		    </div>                   
                   <br>
+                  
                 <div class="row">
                       <div class="form-group col-md-4" ng-class="{ 'has-error': employeeSave.age.$touched && employeeSave.age.$invalid }">
                             <label class="col-md-4 control-label" for="size">Heading</label>
@@ -54,15 +54,15 @@
                                 <input type="text" placeholder="heading" id="age" class="form-control" name="heading" ng-model="srp.heading" ng-value="{{employeeDetails.age}}" ng-bind="{{employeeDetails.age}}" required>
                             </div>
                         </div>  
-					</div><br><br>                
+		</div><br><br>               
                 <div class="row"> 
                         <div class="form-group col-md-6" ng-class="{ 'has-error': employeeSave.address_line1.$touched && employeeSave.address_line1.$invalid }">
                             <label class="col-md-4 control-label" for="Description">Policies Description</label>
                             <div class="col-md-8">
-                                <textarea name="Description" id="address_line1" ng-model="srp.Description"   rows="3" cols="45" placeholder="Enter Descripton of Description"></textarea>
+                                <textarea name="Description" id="address_line1" ng-model="srp.description"   rows="3" cols="45" placeholder="Enter Descripton of Description"></textarea>
                             </div>
                         </div> 
-                     </div><br>
+                </div><br>
                         
                  <div><p class="center"><h3>{{message}}</h3></p></div>
                      

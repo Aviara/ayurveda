@@ -125,6 +125,9 @@
                         </li>
                     </ol>
                 </div>
+                <div class="col-md-12 center">
+                <a href="#/add-room-offer"><button type="button" class="btn btn-info breadcrumb-button" name="view-listing">Add New Offer</button></a>
+            </div>
                 <div class="col-md-8" ng-if="thisIsraipurAddChallanForm == true">
                     <a  href="#/challan"><button type="button" class="btn btn-success breadcrumb-button" name="view-listing"><i class="fa fa-plus-circle"> Add New RoomType</i></button></a>
                     <a href="#/view-payments"><button type="button" class="btn btn-success breadcrumb-button" name="view-listing"><i class="fa fa-plus-circle"> View Payments</i></button></a>
@@ -178,14 +181,15 @@
                         <tbody>
                             <tr ng-repeat="sro in RoomOfferList track by $index" id="row-{{sro.id}}">
                                 <td>{{sro.id}}</td>
+                                <!--<td>{{sro.id}}</td>-->
                                 <td>{{sro.resortId}}</td>
-                                <td>{{sro.room_Id}}</td>
+                                <td>{{sro.roomId}}</td>
                                 <td>{{sro.heading}}</td>
                                 <td>{{sro.description}}</td>
-                                <td>{{sro.Created_by}}</td>
-                                <td>{{sro.Created_on}}</td>
-                                <td>{{sro.Updated_by}}</td>
-                                <td>{{sro.Updated_on}}</td>
+                                <td>{{sro.createdBy}}</td>
+                                <td>{{sro.createdOn}}</td>
+                                <td>{{sro.updatedBy}}</td>
+                                <td>{{sro.updatedOn}}</td>
                                 <td>
                                     <a class="btn" href="#/add-room-offer/edit/{{sro.id}}">
                                         <i title="Edit" class="fa fa-pencil"></i>
@@ -228,7 +232,7 @@
                 </div>
             </div>
                    <div class="col-md-12 center">
-                <a href="#/add-room-type"><button type="button" class="btn btn-info breadcrumb-button" name="view-listing">Add New Room</button></a>
+                <a href="#/add-room-offer"><button type="button" class="btn btn-info breadcrumb-button" name="view-listing">Add New Offer</button></a>
             </div>
             <div class="modal fade bs-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
                 <div class="modal-dialog modal-lg">

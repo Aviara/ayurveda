@@ -49,8 +49,6 @@
             $data = array(
                 'name' => $strName,
                 'description' => $strDescription,
-                'createdBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
-                'createdOn' => date('Y-m-d h:i:s'),
                 'updatedBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
                 'updatedOn' => date('Y-m-d h:i:s')
             );

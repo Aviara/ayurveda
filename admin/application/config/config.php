@@ -34,6 +34,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 $strBaseUrl = 'http://localhost/ayurveda/admin/';
 $config['base_url']	= $strBaseUrl . 'index.php';
 
+define('super_admin', 22);
+define('resort_admin', 23);
 define('BASE_URL',          $strBaseUrl);
 define('CSS_PATH',          $strBaseUrl . 'assets/css/');
 define('JS_PATH',           $strBaseUrl . 'assets/js/');

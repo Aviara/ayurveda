@@ -46,10 +46,10 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
      * *********************** this is for displaying todays total collection********************
      * *****************************************************************************************/ 
      
-                $scope.totalPaymentAmmount2 = 0;
-        var url = erpSystem.baseUrl + 'payment/laundrysCurrentMonthCollection/';
-	$http.get(url).success(function (data) {
-		if (data.hasOwnProperty('found')) {
+           $scope.totalPaymentAmmount2 = 0;
+                  var url = erpSystem.baseUrl + 'payment/laundrysCurrentMonthCollection/';
+                  $http.get(url).success(function (data) {
+            	if (data.hasOwnProperty('found')) {
 			$scope.payemnts2 = data.payments;
 			angular.forEach(data.payments, function(value, key) {
 				//console.log(value);
@@ -258,10 +258,10 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
         $scope.updateData = false;
 
         var url = erpSystem.baseUrl + 'employee/getEmployeeTypeList';
-        
         $http.get(url).success(function (data) {
             $scope.employeeTypeList = data.employeeTypeList;
         });
+        
         var url = erpSystem.baseUrl + 'ResortUsefulInfo/getAllResorts';
         $http.get(url).success(function (data) {
             $scope.getAllResorts = data.ResortList;
@@ -1230,13 +1230,17 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
 
         }
     }
-]).controller('AutoCompleteController', ['$scope', '$routeParams', '$http',
+])
+
+.controller('AutoCompleteController', ['$scope', '$routeParams', '$http',
     function ($scope, $routeParams, $http) {
         $scope.fruitName = undefined;
         $scope.items = ["Apple", "Banana", "Orange"];
     }
 ])
-.controller('Rooms', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
+///===================================JATIN=================================//
+//==========================================================================//
+ .controller('Rooms', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
     function ($scope, $routeParams, $http, erpSystem, $location) {
 
         $scope.updateData = false;
@@ -1246,14 +1250,21 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
 //        $http.get(url).success(function (data) {
 //            $scope.employeeTypeList = data.employeeTypeList;
        // });
+        var url = erpSystem.baseUrl + 'Rooms/getAllRoomTypesByResortId';
+            $http.get(url).success(function (data) {
+                $scope.roomTypeList = data.roomTypeList;
+            });
+            
 
         if ($routeParams.id) {
+            
             $scope.id = $routeParams.id;
             var url = erpSystem.baseUrl + 'Rooms/getRoomByRoomId/' + $scope.id;
             $http.get(url).success(function (data) {
                 $scope.update = true;
                 $scope.hrm = data;
             });
+            
         } else {
             var url = erpSystem.baseUrl + 'Rooms/getRoomListByResortId';
             $http.get(url).success(function (data) {
@@ -1323,6 +1334,7 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
         }
     }
 ])
+//===============================END===============================================//
 .controller('RoomType', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
     function ($scope, $routeParams, $http, erpSystem, $location) {
 
@@ -1580,6 +1592,8 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
 
     }
 ])
+//===================================JATIN=================================//
+//==========================================================================//
 .controller('OffersBenefit', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
       function ($scope, $routeParams, $http, erpSystem, $location) {
 
@@ -1590,6 +1604,14 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
       //  $http.get(url).success(function (data) {
           //      $scope.employeeTypeList = data.employeeTypeList;
        // });
+       var url = erpSystem.baseUrl + 'Rooms/getAllRoomTypesByResortId';
+            $http.get(url).success(function (data) {
+                $scope.roomTypeList = data.roomTypeList;
+            }); 
+        var url = erpSystem.baseUrl + 'Rooms/getAllRoomNumber';
+            $http.get(url).success(function (data) {
+                $scope.roomNumberList = data.roomNumberList;
+            });
 
         if ($routeParams.RoomOfferId) {
             $scope.RoomOfferId = $routeParams.RoomOfferId;
@@ -1658,17 +1680,35 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
         }
     }
 ])
+//===================================JATIN=================================//
+//==========================================================================//
 .controller('ResortPolicies', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
     function ($scope, $routeParams, $http, erpSystem, $location) {
 
         $scope.updateData = false;
+        $scope.showResorts = true;
+        
+ var url = erpSystem.baseUrl + 'employee/getLogedInEmpType';
+        $http.get(url).success(function (data) {
+            $scope.currentEmployeeTypeId = data.employeeTypeId;
+//            alert($scope.employeeTypeId1); 
+//                   alert(JSON.stringify($scope.employeeTypeId1));
+         }); 
 
-       // var url = erpSystem.baseUrl + 'employee/getEmployeeTypeList';
-      
-      //  $http.get(url).success(function (data) {
-          //      $scope.employeeTypeList = data.employeeTypeList;
-       // });
-
+        if($scope.employeeTypeId1 == 22){ 
+//            alert ('YES');
+            $scope.showResorts = false; 
+            
+        }
+        else{
+//           alert('no');
+            var url = erpSystem.baseUrl + 'ResortUsefulInfo/getAllResorts';
+                 $http.get(url).success(function (data) {
+                 $scope.getAllResorts = data.ResortList;
+//                alert(JSON.stringify( $scope.getAllResorts));
+            }); 
+        }
+ 
         if ($routeParams.ResortPoliciesId) {
             $scope.ResortPoliciesId = $routeParams.ResortPoliciesId;
             var url = erpSystem.baseUrl + 'ResortPolicies/getPoliciesByid/' + $scope.ResortPoliciesId;
@@ -1684,6 +1724,8 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
         }
 
         $scope.saveResortPolicies = function (srp) {
+//            alert(JSON.stringify(srp));
+//            alert(srp.resortId);
             var url = '';
             if (srp.hasOwnProperty('id')) {
                 url = erpSystem.baseUrl + 'ResortPolicies/editResortPolicies';
@@ -1706,7 +1748,7 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
 
             $http.post(url, postData, config).success(function (data, status, headers, config) {
                 boolIsInsert = data.success;
-
+//alert(boolIsInsert);
                 if (srp.hasOwnProperty('id') && 1 == boolIsInsert) {
                     $location.url('view-policies?update=true&id=' + srp.id);
                 } else {
@@ -1736,6 +1778,7 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
         }
     }
 ])
+//===============================END----------------------------------//
 .controller('RoomTypes', ['$scope', '$routeParams', '$http', 'erpSystem', '$location',
        function ($scope, $routeParams, $http, erpSystem, $location) {
 
@@ -1756,7 +1799,7 @@ laundryCtrl.controller('DashbordCtrl', ['$scope', '$routeParams', '$http', 'erpS
         } else {
            var url = erpSystem.baseUrl + 'RoomType/roomList';
             $http.get(url).success(function (data) {
-               $scope.roomlistv = data;
+               $scope.roomlist = data;
             });
         }
 

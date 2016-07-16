@@ -9,7 +9,7 @@ class RoomOfferBenefit_Model extends CI_Model {
         $arrPostData = (true == isset($_POST['params'])) ? $_POST['params'] : array();
         
        // $arrPostData = $_POST['params'];
-        
+        $strroomId             = (true == isset($arrPostData['roomId']) && true == valStr($arrPostData['roomId'])) ? $arrPostData['roomId'] : NULL;
         $strHeading             = (true == isset($arrPostData['heading']) && true == valStr($arrPostData['heading'])) ? $arrPostData['heading'] : NULL;
         $strOfferDescription    = (true == isset($arrPostData['description']) && true == valStr($arrPostData['description'])) ? $arrPostData['description'] : NULL;
        // $strbedcost             = (true == isset($arrPostData['costForExtraBed']) && true == valStr($arrPostData['costForExtraBed'])) ? $arrPostData['costForExtraBed'] : NULL;
@@ -18,15 +18,13 @@ class RoomOfferBenefit_Model extends CI_Model {
 //         if($this->session->userdata('id') == 1){
 //            $query = $this->db->query("SELECT * FROM branches ORDER BY id DESC LIMIT 1")->row_array();
             $data = array(
-                'resortId' => $strHeading,
+                'roomId' => $strroomId,
                 'heading' => $strHeading,
                 'description' => $strOfferDescription ,
-                'Created_on' => date('Y-m-d h:i:s'),
-                //'updatedOn' =>date('Y-m-d h:i:s'),
-//                'createdBy' => $strFirstName,
-//                'createdOn' => $strEmployeeTypeId,
-//               // 'updatedBy' => $strAddressLine1,
-//                'updatedOn' => $strMobileNo,
+                'createdBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
+                'createdOn' => date('Y-m-d h:i:s'),
+                'updatedBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
+                'updatedOn' => date('Y-m-d h:i:s')
         );
             
 //        }else{
@@ -63,16 +61,18 @@ class RoomOfferBenefit_Model extends CI_Model {
         }
         
        $arrPostData = (true == isset($_POST['params'])) ? $_POST['params'] : array();
-        
+        $strroomId             = (true == isset($arrPostData['roomId']) && true == valStr($arrPostData['roomId'])) ? $arrPostData['roomId'] : NULL;
         $strHeading             = (true == isset($arrPostData['heading']) && true == valStr($arrPostData['heading'])) ? $arrPostData['heading'] : NULL;
         $strOfferDescription    = (true == isset($arrPostData['description']) && true == valStr($arrPostData['description'])) ? $arrPostData['description'] : NULL;
 //         if($this->session->userdata('id') == 1){
 //            $query = $this->db->query("SELECT * FROM branches ORDER BY id DESC LIMIT 1")->row_array();
              $data = array(
+               'roomId' => $strroomId,
                 'resortId' => $strHeading,
                 'heading' => $strHeading,
                 'description' => $strOfferDescription ,
-                'Created_on' => date('Y-m-d h:i:s'),
+                'updatedBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
+                'updatedOn' => date('Y-m-d h:i:s')
         );
         
         $this->db->where(array('id' => $intId));

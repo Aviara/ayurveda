@@ -39,21 +39,21 @@
                                 <label class="col-md-4 control-label" for="firstname">First Name</label>
                                 <div class="col-md-8">
                                     <input type="hidden" value="{{employeeDetails.id}}" name="id" id="id" />
-                                    <input type="text" placeholder="First Name" id="firstname" class="form-control firstname"  ng-model="employee.first_name" ng-value="{{employeeDetails.first_name}}" ng-bind="{{employeeDetails.first_name}}" required>
+                                    <input type="text" placeholder="First Name" id="firstname" class="form-control firstname"  ng-model="employee.firstName" ng-value="{{employeeDetails.firstName}}" ng-bind="{{employeeDetails.firstName}}" required>
                                     <div id="errorFirstName"></div>
                                 </div>
                             </div>
                             <div class="form-group col-md-4">
                                 <label class="col-md-4 control-label" for="middlename">Middle Name</label>
                                 <div class="col-md-8">
-                                    <input type="text" placeholder="Middle Name" id="middlename" class="form-control" name="middle_name" ng-model="employee.middle_name" ng-value="{{employeeDetails.middle_name}}" ng-bind="{{employeeDetails.middle_name}}" required>
+                                    <input type="text" placeholder="Middle Name" id="middlename" class="form-control" name="middle_name" ng-model="employee.middleName" ng-value="{{employeeDetails.middleName}}" ng-bind="{{employeeDetails.middleName}}" required>
                                  <div id="errorMiddleName"></div>
                                 </div>
                             </div>
                             <div class="form-group col-md-4" ng-class="{ 'has-error': employeeSave.last_name.$touched && employeeSave.last_name.$invalid }">
                                 <label class="col-md-4 control-label" for="lastname">Last Name</label>
                                 <div class="col-md-8">
-                                    <input type="text" placeholder="Last Name" id="lastname" class="form-control" name="last_name" ng-model="employee.last_name" ng-value="{{employeeDetails.last_name}}" ng-bind="{{employeeDetails.last_name}}" required>
+                                    <input type="text" placeholder="Last Name" id="lastname" class="form-control" name="last_name" ng-model="employee.lastName" ng-value="{{employeeDetails.lastName}}" ng-bind="{{employeeDetails.lastName}}" required>
                                  <div id="errorLastName"></div>
                                 </div>
                             </div>
@@ -72,19 +72,29 @@
                              <div class="form-group col-md-4" ng-class="{ 'has-error': employeeSave.address_line1.$touched && employeeSave.address_line1.$invalid }">
                                 <label class="col-md-4 control-label" for="address_line1">Address Line 1</label>
                                 <div class="col-md-8">
-                                    <textarea name="address_line1" id="address_line1" ng-model="employee.address_line1"  placeholder="Enter Address details."></textarea>
+                                    <textarea name="address_line1" id="address_line1" ng-model="employee.addressLine1"  placeholder="Enter Address details."></textarea>
                                 </div>
                               </div>
                              
                              <div class="form-group col-md-4" ng-class="{ 'has-error': employeeSave.employee_type_id.$touched && employeeSave.employee_type_id.$invalid }">
                             <label class="col-md-4 control-label" for="url">Employee Type</label>
                             <div class="col-md-8">
-                                <select id="form-field-select-1" class="form-control" ng-model="employee.employee_type_id" >
+                                <select id="form-field-select-1" class="form-control" ng-model="employee.employeeTypeId" >
                                     <option value="">Select Employee Type</option>
                                     <option ng-repeat="employeeType in employeeTypeList track by $index" value="{{employeeType.id}}">  {{employeeType.name}} </option>
                                 </select>
                             </div>
                         </div>
+
+                        <div class="form-group col-md-4" ng-class="{ 'has-error': employeeSave.employee_type_id.$touched && employeeSave.employee_type_id.$invalid }">
+                            <label class="col-md-4 control-label" for="url">Select Resort</label>
+                           <div class="col-sm-8">  
+                                <select id="form-field-select-1" class="form-control" ng-model="employee.resortId" name="id">
+                                    <option value="">Select Resort</option>
+                                    <option ng-repeat="getresortSave in getAllResorts track by $index" value="{{getresortSave.id}}">  {{getresortSave.name}} </option>
+                                </select>
+                            </div>
+                        </div>        
 <!--                        <div class="form-group col-md-5" ng-class="{ 'has-error': employeeSave.driving_listien_no.$touched && employeeSave.driving_listien_no.$invalid }">
                             <label class="col-sm-4 control-label" for="driving_listien_no">Driving Listien No</label>
                             <div class="col-sm-8">
@@ -120,7 +130,7 @@
                             <div class="form-group col-md-4" ng-class="{ 'has-error': employeeSave.birth_date.$touched && employeeSave.birth_date.$invalid }">
                                 <label class="col-md-4 control-label" for="birth_date">Birth Date</label>
                                 <div class="col-md-8">
-                                    <input type="text" placeholder="Birth Date" id="birth_date" class="form-control" name="birth_date" ng-model="employee.birth_date" ng-value="{{employeeDetails.birth_date}}" ng-bind="{{employeeDetails.birth_date}}" required>
+                                    <input type="text" placeholder="Birth Date" id="birth_date" class="form-control" name="birth_date" ng-model="employee.birthDate" ng-value="{{employeeDetails.birthDate}}" ng-bind="{{employeeDetails.birthDate}}" required>
                                 </div>
                             </div> 
                             
@@ -145,7 +155,7 @@
                                 <div class="col-md-8">
                                     <div class="input-group">
                                         <span class="input-group-addon"><i class="fa fa-phone-square"></i></span>
-                                        <input type="text" placeholder="Mobile No" id="mobile_no" class="form-control" name="mobile_no" ng-model="employee.mobile_no" ng-value="{{employeeDetails.mobile_no}}" ng-bind="{{employeeDetails.mobile_no}}" required>
+                                        <input type="text" placeholder="Mobile No" id="mobile_no" class="form-control" name="mobile_no" ng-model="employee.mobileNo" ng-value="{{employeeDetails.mobileNo}}" ng-bind="{{employeeDetails.mobileNo}}" required>
                                     </div>
                                 </div>
                             </div>
@@ -154,7 +164,7 @@
                                 <div class="col-md-8">
                                     <div class="input-group">
                                         <span class="input-group-addon">@</span>
-                                        <input type="email" placeholder="Email Id" id="email_id" class="form-control" name="email_id" ng-model="employee.email_id" ng-value="{{employeeDetails.email_id}}" ng-bind="{{employeeDetails.email_id}}" required>
+                                        <input type="email" placeholder="Email Id" id="email_id" class="form-control" name="email_id" ng-model="employee.emailId" ng-value="{{employeeDetails.emailId}}" ng-bind="{{employeeDetails.emailId}}" required>
                                      <div id="errorEmail"></div>
                                     </div>
                                 </div>
@@ -164,7 +174,7 @@
                                 <div class="col-md-8">
                                     <div class="input-group">
                                         <span class="input-group-addon">@</span>
-                                        <input type="email" placeholder="Office Mail Id" id="office_email_id" class="form-control" name="office_email_id" ng-model="employee.office_email_id" required>
+                                        <input type="email" placeholder="Office Mail Id" id="office_email_id" class="form-control" name="office_email_id" ng-model="employee.officeEmailId" required>
                                     </div>
                                 </div>
                             </div>
@@ -229,7 +239,7 @@
                             <div class="form-group col-md-4">
                                 <label class="col-sm-4 control-label" for="old_password">Old Password</label>
                                 <div class="col-sm-8">
-                                    <input type="password" placeholder="Enter Old Password" id="old_password" class="form-control" name="old_password" ng-model="employee.old_password" required>
+                                    <input type="password" placeholder="Enter Old Password" id="old_password" class="form-control" name="old_password" ng-model="employee.oldPassword" required>
                                 </div>
                             </div>
                         </div>    

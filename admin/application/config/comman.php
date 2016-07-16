@@ -4,6 +4,7 @@
  * ********* Function to auto include used class files **********
  * ************************************************************ */
 
+
 function redirect($strRedirectPath) {
     header('location:' . $strRedirectPath);
     exit;

@@ -14,11 +14,11 @@ $files_uploaded = move_uploaded_file($_FILES["file"]["tmp_name"],  $_SERVER['DOC
 
 $data = array(
               
-                'image_name'      => $newfilename,
-                'created_by'     => $this->session->userdata('id'),
-                'created_on'     => date('Y-m-d h:i:s'),
-                'updated_by'     => $this->session->userdata('id'),
-                'updated_on'     => date('Y-m-d h:i:s')
+                'imageName'      => $newfilename,
+                'createdBy'     => $this->session->userdata('id'),
+                'createdOn'     => date('Y-m-d h:i:s'),
+                'updatedBy'     => $this->session->userdata('id'),
+                'updatedOn'     => date('Y-m-d h:i:s')
         );
         
         

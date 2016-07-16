@@ -12,10 +12,10 @@
             $data = array(
                 'name' => $strName,
                 'description' => $strDescription,
-                'created_by' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
-                'created_on' => date('Y-m-d h:i:s'),
-                'updated_by' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
-                'updated_on' => date('Y-m-d h:i:s')
+                'createdBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
+                'createdOn' => date('Y-m-d h:i:s'),
+                'updatedBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : 1,
+                'updatedOn' => date('Y-m-d h:i:s')
             );
 
             $this->db->insert('employee_types', $data);
@@ -50,10 +50,10 @@
             $data = array(
                 'name' => $strName,
                 'description' => $strDescription,
-                'created_by' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : null,
-                'created_on' => date('Y-m-d h:i:s'),
-                'updated_by' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : null,
-                'updated_on' => date('Y-m-d h:i:s')
+                'createdBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : null,
+                'createdOn' => date('Y-m-d h:i:s'),
+                'updatedBy' => (true == valStr($this->session->userdata('id'))) ? $this->session->userdata('id') : null,
+                'updatedOn' => date('Y-m-d h:i:s')
             );
         
         $this->db->where(array('id' => $intId));

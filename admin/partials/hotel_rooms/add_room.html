@@ -38,13 +38,13 @@
                           <div class="form-group col-sm-4" ng-class="{ 'has-error': employeeSave.driving_listien_no.$touched && employeeSave.driving_listien_no.$invalid }">
                             <label class="col-sm-4 control-label" for="roomNumber">Room Number</label>
                             <div class="col-sm-8">
-                                <input type="text" placeholder="roomNumber" id="driving_listien_no" class="form-control" name="roomNumber" ng-model="hrm.roomno" ng-value="{{employeeDetails.driving_listien_no}}" ng-bind="{{employeeDetails.driving_listien_no}}" required>
+                                <input type="text" placeholder="roomNumber" id="driving_listien_no" class="form-control" name="roomNumber" ng-model="hrm.roomNo" ng-value="{{employeeDetails.driving_listien_no}}" ng-bind="{{employeeDetails.driving_listien_no}}" required>
                             </div>
                           </div>
                         <div class="form-group col-md-4">
                             <label class="col-md-4 control-label" for="roomTypeId">Room type</label>
                             <div class="col-md-8">
-                              <select id="form-field-select-1" class="form-control" ng-model="hrm.room_type_id" name="room_type_id">
+                               <select  class="form-control" ng-model="hrm.roomTypeId" name="room_type_id">
                                     <option value="">Select Room Type</option>
                                     <option ng-repeat="roomType in roomTypeList track by $index" value="{{roomType.id}}">  {{roomType.name}} </option>
                                 </select>
@@ -64,14 +64,14 @@
                             <label class="col-md-4 control-label" for="costPerNight">Cost Per Night</label>
                              <div class="col-md-8">
 
-                                <input type="text" placeholder="costPerNight" id="lastname" class="form-control" name="costPerNight" ng-model="hrm.Cost_per_night" ng-value="{{employeeDetails.last_name}}" ng-bind="{{employeeDetails.last_name}}" required>
+                                <input type="text" placeholder="costPerNight" id="lastname" class="form-control" name="costPerNight" ng-model="hrm.costPerNight" ng-value="{{employeeDetails.last_name}}" ng-bind="{{employeeDetails.last_name}}" required>
 
                             </div>
                         </div>
                         <div class="form-group col-md-6" ng-class="{ 'has-error': employeeSave.email_id.$touched && employeeSave.email_id.$invalid }">
                             <label class="col-md-4 control-label" for="costForExtraBed">Cost For Extra bed</label>
                             <div class="col-md-8">
-                                <input type="text" placeholder="costForExtraBed" id="costForExtraBed" class="form-control" name="costForExtraBed" ng-model="hrm.Cost_for_extra_bed" ng-value="{{employeeDetails.last_name}}" ng-bind="{{employeeDetails.last_name}}" required>
+                                <input type="text" placeholder="costForExtraBed" id="costForExtraBed" class="form-control" name="costForExtraBed" ng-model="hrm.costForExtraBed" ng-value="{{employeeDetails.last_name}}" ng-bind="{{employeeDetails.last_name}}" required>
                              <div id="errorLastName"></div>
                             </div>
                         </div>
@@ -81,13 +81,13 @@
                         <div class="form-group col-md-6" ng-class="{ 'has-error': employeeSave.address_line1.$touched && employeeSave.address_line1.$invalid }">
                             <label class="col-md-4 control-label" for="bedDiscription">Bed Description</label>
                             <div class="col-md-8">
-                                <textarea name="bedDiscription" id="address_line1" ng-model="hrm.Description"   rows="3" cols="45" placeholder="Enter Descripton of Bed"></textarea>
+                                <textarea name="bedDiscription" id="address_line1" ng-model="hrm.description"   rows="3" cols="45" placeholder="Enter Descripton of Bed"></textarea>
                             </div>
                         </div> 
                           <div class="form-group col-md-6" ng-class="{ 'has-error': employeeSave.employee_type_id.$touched && employeeSave.employee_type_id.$invalid }">
                             <label class="col-md-8 control-label" for="url">View</label>
                             <div class="col-md-4">
-                                <select id="form-field-select-1" class="form-control" ng-model="hrm.Window_view" name="view">
+                                <select id="form-field-select-1" class="form-control" ng-model="hrm.windowView" name="view">
                                     <option value="">Select View</option>
                                     <option value="Sea View">Sea View</option>
                                     <option value="Loan View">Loan View</option>
@@ -96,13 +96,13 @@
                             </div>
                         </div>
                         </div><br><br>
-							</div>
+		      </div>
                         
                      <div class="row">
                          <div class="form-group col-md-5" ng-class="{ 'has-error': employeeSave.mobile_no.$touched && employeeSave.mobile_no.$invalid }">
-                            <label class="col-md-4 control-label" for="noofRooms">No of Rooms</label>
+                            <label class="col-md-4 control-label" for="noofBeds">No of Beds</label>
                             <div class="col-md-8">
-                                    <input type="text" placeholder="Number of Rooms" id="No of Rooms" class="form-control" name="noofRooms" ng-model="hrm.Number_of_beds" ng-value="{{employeeDetails.mobile_no}}" ng-bind="{{employeeDetails.mobile_no}}" required>
+                                    <input type="text" placeholder="Number of Beds" id="No of Beds" class="form-control" name="noofRooms" ng-model="hrm.numberOfBeds" ng-value="{{employeeDetails.mobile_no}}" ng-bind="{{employeeDetails.mobile_no}}" required>
                             </div>
                         </div>
                       <!--  <div class="form-group col-md-5" ng-class="{ 'has-error': employeeSave.email_id.$touched && employeeSave.email_id.$invalid }">

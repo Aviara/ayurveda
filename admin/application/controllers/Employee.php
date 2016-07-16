@@ -10,7 +10,13 @@ class Employee extends CI_Controller {
         $this->load->view('branches/branches-add');
         $this->load->view('includes/footer');
     }
-
+    
+    public function getLogedInEmpType() {
+         $userData = $this->session->userdata('user');
+        // $empTypeId = $userData-> employeeTypeId;
+        echo json_encode($userData);
+    }
+    
     public function getEmployee($intEmployeeId) {
         $query = $this->db->get_where('tbl_employees', array('id' => $intEmployeeId));
         
